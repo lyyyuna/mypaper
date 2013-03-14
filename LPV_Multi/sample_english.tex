@@ -1,0 +1,271 @@
+% $ based on Id: sample_english-v1.2.tex,v 1.2 2007/04/12 21:05:22 zlb Exp $
+% $Id: sample_english.tex 6 2011-01-24 13:13:33Z hsqi $
+
+\documentclass[english]{cccconf}
+%\documentclass[usemulticol,english]{cccconf}
+\usepackage[comma,numbers,square,sort&compress]{natbib}
+\begin{document}
+
+\title{Template for Preparation of Papers for Chinese Control Conference}
+\author{ZHANG San\aref{amss}, 
+        LI Si\aref{amss,hit},
+        WANG Wu\aref{hit}}
+
+% Note: the first argument in the \affiliation command is optional.
+% It defines a label for the affiliation which can be used in the \aref
+% command. If there is only one affiliation for all authors, then the
+% optional argument in the \affiliation command should be suppressed,
+% and the \aref command should aslo be removed after each author in
+% \author command, in this case the affiliation will not be numbered.
+
+% 请注意：\affiliation命令的第一个参数是可选的，它定义了用于\aref命令的标签。
+% 如果所有作者只有一个单位，请不要使用\affiliation命令的可选参数，同时在上面
+% 的\author命令中的每位作者姓名后面也不能使用\aref命令，示例如下
+% \author{First Author, Second Author, Third Author}
+% \affiliation{Chinese Academy of Sciences, Beijing 100190, P.~R.~China\email{ccc@amss.ac.cn}}
+% 此时单位前不会有数字编号，作者姓名后面也没有编号
+
+\affiliation[amss]{Academy of Mathematics and Systems Science,
+        Chinese Academy of Sciences, Beijing 100190, P.~R.~China
+        \email{ccc@amss.ac.cn}}
+\affiliation[hit]{Harbin Institute of Technology, Harbin 150001, P.~R.~China
+        \email{xxx@hit.edu.cn}}
+
+\maketitle
+
+\begin{abstract}
+These instructions give you basic guidelines for preparing papers for
+Chinese Control Conference. Note that ``Abstract''  and ``Key Words'' are bold.
+\end{abstract}
+
+\keywords{Paper, Instruction, Chinese Control Conference}
+
+% Please remove or comment out the following line if the footnote is not necessary 
+\footnotetext{This work is supported by National Natural Science
+Foundation (NNSF) of China under Grant 00000000.}
+
+\section{Introduction}
+
+These are instructions for authors typesetting for the Chinese
+Control Conference (CCC). This document has been prepared using the
+required format. The electronic copy of this document is available
+at http://cms.amss.ac.cn/support/. \textbf{Please use this
+document as a ``template'' to prepare your manuscript. For
+submission guidelines, follow instructions on the paper submission
+system as well as the conference website.}
+
+The paper is to be written in two-column format and be right and left
+justified. The column width should be 84.5mm. The gap between the two
+columns should be 7mm.
+
+\subsection{Instructions for Authors}
+
+In order for the proceedings to be ready for distribution at the
+conference, an electronic copy of the final version of your paper
+(both MS word and PDF formats) must be submitted through the \textit{TCCT 
+Conference Paper Management System} at http://cms.amss.ac.cn. 
+Please follow the submission instructions shown on the website.
+
+\section{Formatting Instructions}
+
+\LaTeXe{} Authors: please try to use the paragraph styles contained
+in this document.
+
+\subsection{Page/Font Settings}
+
+It is strongly recommended that prospective authors download
+suitable style file for use with \LaTeX{} and templates for use with
+MS Word.
+
+Style files and templates provided here have been created to ensure
+that margin requirement is adequately met. If, for some reason, you
+are not able to use the provided templates or style files, please
+strictly observe the margins and font settings in 
+Tables~\ref{tab1} and \ref{tab2}.
+
+\begin{table}[!htb]
+  \centering
+  \caption{Page Margins}
+  \label{tab1}
+  \begin{tabular}{l|l}
+    \hhline
+    Paper Size          & (21$\times$29.7)cm \\ \hline
+    Top Margin (1st page)   & 3.0cm \\ \hline
+    Top Margin (rest)   & 2cm \\ \hline
+    Left Margin         & 1.7cm \\ \hline
+    Right Margin        & 1.7cm \\ \hline
+    Bottom Margin       & 2.2cm \\ \hline
+    Column Width        & 8.45cm \\ \hline
+    Column Separation       & 0.7cm \\ \hline
+    Text Width          & 17.6cm \\ \hline
+    Text Height         & 25.5cm \\
+    \hhline
+  \end{tabular}
+\end{table}
+
+\begin{table}[!htb]
+  \centering
+  \caption{Font Settings}
+  \label{tab2}
+  \begin{tabular}{c|c}
+    \hhline
+    Title           & Times New Roman, 16pt, bold \\ \hline
+    Author List         & Times New Roman, 11pt \\ \hline
+    Authors’ Address       & 9pt \\ \hline
+    Abstract, Key Words     & 9pt \\ \hline
+    Section Titles      & 11pt, bold \\ \hline
+    Subsection Titles       & 10pt, bold \\ \hline
+    Normal Text         & 10pt \\ \hline
+    Table/Figure Captions   & 9pt \\ \hline
+    Footnotes   & 8pt \\ \hline
+    References   & 9pt \\
+    \hhline
+  \end{tabular}
+\end{table}
+
+\subsection{Section and Subsection Headings}
+
+Number section and subsection headings consecutively in Arabic numbers and
+type them in bold. Avoid using too many capital letters. If any further
+subdivision of a subsection is needed the titles should be 10 point and
+flushed left.
+
+\subsection{Main Text}
+
+Use Times New Roman with font size 10 point for text (character
+size). There is no separation between paragraphs, and the first line of 
+each paragraph is indented by 1em.
+You may type on plain white A4 paper. Typing area should not exceed
+176mm$\times$255mm. The text should be prepared with a double
+column format and single line spacing.
+
+\subsection{Tables}
+
+All tables must be centered in the column and numbered consecutively
+(in Arabic numbers). Table headings should be placed above the table.
+Place tables as close as possible to where they are mentioned in the
+main text (see Table~\ref{tab1} and Table~\ref{tab2}).
+
+\subsection{Figures}
+
+All illustrations should be original drawings or photographic prints of
+originals.  Photographs should be glossy prints. Photocopies are often
+not good enough and should be avoided.  All illustrations must be numbered
+consecutively, using Arabic numbers.  Center figure captions beneath the
+figure (see Fig.~\ref{fig1}). If possible, do not assemble figures at the
+back of your article, but place them as close as possible to where they are
+mentioned in the main text. No part of a figure should go beyond the typing
+area. Captions should appear below graphical objects, as in Fig.~\ref{fig1}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\hsize]{fig1.eps}
+  \caption{The figure caption}
+  \label{fig1}
+\end{figure}
+
+Color and grayscale figures should be prepared with 400 dpi
+resolution and  saved with no compression, monochrome figure should
+be prepared with 600 dpi resolution and saved with no compression.
+
+\subsection{Mathematical Formulas}
+
+Mathematical formulas should be roughly centered and have to be numbered
+as formula~(\ref{eq1}).
+\begin{equation}
+  \label{eq1}
+  \lambda_{1,2} = 0.5 \left[\, c_{11} + c_{12}
+            \sqrt{(c_{11} + c_{12})^2 + 4 c_{12} c_{21}} \,\right]
+\end{equation}
+
+\subsection{References}
+
+References are listed by order of first appearance and the reference
+items are represented as Arabic numbers in square brackets, e.g.
+\cite{cheng2005,poor1985,smith,cheng2005a,cheng2005b}.
+
+References are titled as ``References" with 11pt bold font, flush
+left and no indent, paragraph spacing before 6pt and after 6pt. The
+body text of references is formatted as 9pt Times New Roman, initial
+paragraph no indentation, hanging indent 0.7cm, single space and
+paragraph spacing after 2pt.
+
+\balance
+
+For journal paper references, the information should be included
+such as author name, article title, journal title, volume number,
+issue number, page number, year. Similarly, author name, book name,
+edition number, publisher and year should be included for book
+references. Examples of both journal paper and book references are
+shown at the end of this template.
+\begin{itemize}
+  \item Proceedings or Books\\
+Give publisher and its location. Give date as (year, month) or (year).
+
+  \item Journal Article\\
+Include the issue number in parentheses immediately after the volume number. Give page numbers.
+
+  \item Article in Proceedings or Books\\
+Give publisher and its location. Give date as (year, month) or (year). Include page numbers.
+\end{itemize}
+
+
+\section{Checklist}
+
+\begin{itemize}
+  \item Do not end a page with a section or subsection heading.
+  \item Do not include page numbers in the text.
+  \item Large figures, tables and mathematical equations may span both columns.
+  \item To balance the two columns on the last page, place the command
+    \verb|\balance| somewhere in the text of what would be the first
+    column of the last page without balanced columns.
+  \item If you have to plug a large formula, table, etc.,  which needs a cross
+  column space, you must add the option\\
+  \verb|    usemulticol|\\ to the
+  \verb|\documentclass| command, then use the command\\
+  \verb|    \singlecolumn{contents}|\\ to input cross column contents.
+
+% 如果希望在正文中插入跨栏内容，则需要在 \verb|\documentclass| 命令中
+% 加入 \verb|usemulticol| 选项，然后用命令 \verb|\singlecolumn{内容}|
+% 插入跨栏内容，参看后面说明形式的示例。该选项利用 \verb|multicol| 宏包
+% 实现单双栏切换，缺点是有脚注的页面的底部对不齐。
+\end{itemize}
+
+\section{Paper Submission}
+
+After proofreading your paper, it must be submitted via
+http://cms.amss.ac.cn/ electronically including both MS
+Word and PDF formats (or \LaTeX{} and PDF formats).
+
+\subsection{Electronic Image Files (Optional)}
+
+You will have the greatest control over the appearance of your figures if you
+are able to prepare electronic image files. Please prepare the image files in
+PostScript(PS) or Encapsulated PostScript (EPS) formats. Use a separate file
+for each image. File names should be of the form ``fig1.ps'' or ``fig2.eps''.
+Please pack the image files and the paper files (both MS Word and PDF formats
+or \LaTeX{} and PDF formats) altogether in zip or rar format and upload
+the packed file.
+
+\begin{thebibliography}{0}
+\bibitem{cheng2005}
+D.~Cheng, Controllability of switched bilinear systems, \emph{IEEE Trans. on
+  Automatic Control}, 50(4): 511--515, 2005.
+
+\bibitem{poor1985}
+H.~Poor, \emph{An Introduction to Signal Detection and Estimation}. New York: Springer-Verlag, 1985, chapter 4.
+
+\bibitem{smith}
+B.~Smith, An approach to graphs of linear forms, accepted.
+
+\bibitem{cheng2005a}
+D.~Cheng, On logic-based intelligent systems, in \emph{Proceedings of 5th
+  International Conference on Control and Automation}, 2005: 71--75.
+
+\bibitem{cheng2005b}
+D.~Cheng, R.~Ortega, and E.~Panteley, On port controlled hamiltonian systems,
+  in \emph{Advanced Robust and Adaptive Control --- Theory and Applications},
+  D.~Cheng, Y.~Sun, T.~Shen, and H.~Ohmori, Eds. Beijing: Tsinghua University Press, 2005: 3--16.
+\end{thebibliography}
+
+\end{document}
