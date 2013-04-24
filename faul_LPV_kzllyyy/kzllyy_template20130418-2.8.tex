@@ -76,25 +76,25 @@ Wind Turbines
 \\}} \vspace{-1.2mm}
 \begin{center}
 WU Ding-hui\makebox{$^{1}$}\makebox{$^{\dag}$},~~LI Yi-yang\makebox{$^{1}$ }\\[2pt]
-\scriptsize{(1. School of Internet of Things, Jiangnan 
+\scriptsize{(1. School of Internet of Things, Jiangnan
 University,\\ Wuxi Jiangsu 214112, China)}
 \end{center}
 
-\vspace{-10pt}\footnotesize{\textbf{Abstract:} 
-According to the pitch actuator fault of WECS (Wind Energy Conversion 
-System) has nonlinear properties and uncertain parameters, an active 
+\vspace{-10pt}\footnotesize{\textbf{Abstract:}
+According to the pitch actuator fault of WECS (Wind Energy Conversion
+System) has nonlinear properties and uncertain parameters, an active
 fault tolerant control technology of WECS was proposed to resolve the
  dynamic stability problems of the wind turbines, which based on the
-LPV gain scheduling technology. The linearized model around the 
-operating point of wind turbine and fault were converted into convex 
-polyhedron structure LPV model by using LPV convex decomposition method. 
-Then each vertex of convex polyhedron was designed to meet the $H\infty$  
-performance by using LMIs (linear matrix inequalities). All the vertex 
-gain were synthesized to get LPV controller with convex polyhedron 
-structure. The simulation result shows that the LPV active fault 
+LPV gain scheduling technology. The linearized model around the
+operating point of wind turbine and fault were converted into convex
+polyhedron structure LPV model by using LPV convex decomposition method.
+Then each vertex of convex polyhedron was designed to meet the $H\infty$
+performance by using LMIs (linear matrix inequalities). All the vertex
+gain were synthesized to get LPV controller with convex polyhedron
+structure. The simulation result shows that the LPV active fault
 tolerant controller could be applied to the WECS successfully.
 
-\textbf{Key words:} WECS; active fault tolerant control; 
+\textbf{Key words:} WECS; active fault tolerant control;
 LPV gain scheduling technology; convex decomposition}}
 \end{center}
 
@@ -114,73 +114,171 @@ LPV gain scheduling technology; convex decomposition}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fontsize{10.5bp}{12.9bp}\selectfont
 \section{引言({\rm Introduction})}
-《控制理论与应用》(中文刊)主要报道系统控制科学中具有新观念、\!\!新思想的理论研究成果及其在各个领域中,
-特别是高科
-技领域中的应用研究成果和在国民经济有关领域技术开发、\!\!技术改造中的应用成果.
-设置的栏目主要有: 长论文, 综述与评论, 论文, 短文等,
-稿件一经录用作者需按照本刊所提供的LaTex模版进行排版.
-本文针对排版中一些常见问题做以下说明:
+最近20年，风机的总装机量增长迅速，从1992年的2.5GW到2010年的200GW\!\cite{1}。
+随着对风机效率和可靠性要求的提高，现代风机不再如传统风机那样一味追求
+高的产能，而是将更多的考虑成本问题，如可靠性，运维成本，风机的使用寿
+命等等。由于大多数风机安装在远离人烟的地区，将容错控制技术引入风力发
+电系统可以大幅减少维护的成本。容错控制是在保证当控制系统中的某些部件
+发生故障时，还能安全地完成控制任务的一种控制技术。容错控制包括被动容
+错和主动容错，其中被动容错控制\!\cite{2}是考虑正常工作和故障状态的参数值设计
+适当固定结构的控制器，在故障前后使用同样的控制器。主动容错\!\cite{2}则是在
+故障发生后重新调整控制器参数，或者改变控制器结构，与被动容错最大的不
+同在于依赖故障诊断机构。
 
-1)~~标点符号: 文中的所有标点符号均采用英文状态下的符号,
-且其后空一格.
+从控制的角度看，风速的变化和故障的发生导致了风力机的的动态特性在工作
+点附近发生非线性变化，又由于缺少风力机精确的数学模型，传统的控制器设
+计策略难以着手\cite{3,4}。//无论是传统的鲁棒技术\cite{3}还是一般的增益调度
+控制\cite{4}，对对象参数的变化和工作点的选取，要求都非常苛刻，不符合实
+际情况。//基于鲁棒控制的线性参数变化(Linear Parameter Varying, LPV)
+增益调度技术对这种动态特性变化显著的风力系统会非常有效\cite{5,6}。对
+海上风力系统来讲，鲁棒性和容错性都是必不可少的主要特性，而LPV控制
+方法恰恰能够同时处理由风速、故障带来的参数变化和模型本身描述不
+精确的问题。
 
-2)~~论文题目: 题目一般不超过20个字, 文字简练、具体.
-尽量避免“基于$\cdots$”“$\cdots$的研究”之类修饰性词语.
-英文题目第1个单词的首字母大写, 其他均用小写.
+LPV容错控制器采用当前工作点附近的风速估计值和故障诊断机构输出的故
+障信息作为增益调度变量，将模型转换为仿射依赖型，在线性矩阵不等
+式(Linear Matrix Inequalities LMIs)约束下求出最优控制器。
 
-3)~~摘要:
-摘要一般应包括研究目的、\!\!研究过程采用的主要方法、\!\!研究的主要结果和结论4大部分,
-同时要注意摘要的完整性、\!\!可读性、\!\!通俗性和逻辑性,
-英文摘要在150$\sim$250个词汇, 第1次出现缩写必须给出全称.
+在一个实际的系统中，传感器，执行器和系统构件中均可能发生故障，从缓
+慢变化的到急性的。这些故障所表现出的共性就是系统动态特性的变化，从
+而使它们大部分都可被描述成一个线性变化的的参数。本文中，为了突出控
+制器的设计过程，选取了一种常见的单一故障，即桨距执行器的液压系统故
+障。当液油中混入过多空气，桨距执行器的动态特性就会变差，从而影响在
+额定风速之上时，风机的恒功率控制[7]。在实际运行和仿真中，虽然LPV的
+综合过程中LMI迭代求解计算量大，但LPV容错控制器是离线计算，在线运行
+时只需在每个采样周期，根据故障信息的变化，经过简单的算数运算，便可
+得出随增益调度变量变化的控制器，涉及的运算量很小。还有一个问题，在
+实际系统中，在有限的采样周期内获得故障信息的精确估计是不太可能的，值
+的庆幸的是Apkarian等人[8]已经证实LPV对时变参数的估计误差并不敏感，不
+需精确估计就可将LPV控制应用于系统的容错控制。
+
+本文组织如下：第2章描述了风力机和故障数学模型，并推导出了其对应的
+LPV仿射依赖模型。在第3章将无限维的控制器转换为顶点的凸优化问题，并
+给出了计算的步骤。第4章和第5章中，给出无容错和有容错控制器的对比
+仿真图，并对仿真结果进行分析，最后给出了结论。
+
+\section{风力机模型({\rm Wind Turbine Model})}
+在仿真中，使用了风力机的非线性模型，其中包括空气动力学子模型，传
+动机构子模型，桨距执行器子模型和故障模型[9]。
+\subsection{空气动力学模型({\rm Aerodynamic Model})}
+风力机的叶桨将风能转换到转子侧，以速度$\omega_r(t)$旋转。风的动能依赖
+于风速$v_r(t)$，空气密度$\rho$和叶桨的等效面积$A$。风能转换到转子侧的能
+量的效率为$C_p(\lambda(t),\beta(t))$，这是桨距角$\beta(t)$和叶尖
+速比$\lambda(t)$的函数。气动转矩可由下式给出：
+\begin{eqnarray}\label{e:1}
+T_a(t)=\frac{1}{2\omega_r(t)}\rho{}Av^3_r(t)C_p(\lambda(t),\beta(t))
+\end{eqnarray}
+
+\subsection{传动机构模型({\rm Drive Train Model})}
+传动机构是低速侧和高速侧组成。低速和高速侧转动惯
+量分别为$J_r$和$J_g$，摩擦系数分别为$B_r$和$B_g$，高低两侧的齿轮
+比为$N_g$。为更好的模拟真实传动机构，考虑粘性摩擦，扭
+力衰减系数是$B_{dt}$，扭转刚度是$K_{dt}$。传动系统的输出是扭矩
+角$\theta_\delta(t)$，电机产生的转矩$T_g(t)$和发电机转
+速$\omega_g(t)$。模型如下：
+\begin{eqnarray}\label{e:2}
+J_r\dot{\omega_r}(t) &=& T_a(t) + \frac{B_{dt}}{N_g}\omega_g(t)\notag -K_{dt}\theta_\Delta(t)  \\
+&& -(B_{dt}+B_r)\omega_r(t) \\
+\label{e:3}
+J_g\dot{\omega_g}(t) &=& \frac{K_{dt}}{N_g}\theta_\Delta(t) +\frac{B_{dt}}{N_g}\omega_r(t)\notag -T_g(t) \\
+&& -(\frac{B_{dt}}{N^2_g}+B_g)\omega_g(t) \\
+\label{e:4}
+\dot{\theta_\Delta}(t) &=& \omega_r(t)-\frac{1}{N_g}\omega_g(t)
+\end{eqnarray}
+
+\subsection{包含故障信息的桨距执行器模型({\rm Pitch System Model Including Fault Model})}
+桨距执行器模型如下:
+\begin{eqnarray}\label{e:5}
+\ddot{\beta}(t)&=&-2\zeta\omega_n\dot{\beta}(t)-\omega^2_n\beta(t)
+ +\omega^2_n\beta_{ref}(t-t_d)
+\end{eqnarray}
+其中$t_d$是变桨距执行器的时间常数，$\beta_{ref}(t)$是桨距角
+的参考值，$\omega_n$是变桨距执行器模型的自然振荡
+频率。$zeta$是变桨距执行器模型的阻尼系数。
+
+桨距执行器中液压油空气含量过高的故障，其
+变化主要影响的是阻尼系数$\zeta$、自然振荡频
+率$\omega_n$。$\alpha_{ha}$为故障影响因子。其故障模型为:
+\begin{eqnarray}\label{e:6}
+\bar{\zeta}(t) &=& (1-\alpha_{ha}(t))\zeta_{min} + \alpha_{ha}(t)\zeta_{max} \\
+\label{e:7}
+\bar{\omega}_n(t) &=& (1-\alpha_{ha}(t))\omega_{n,min} + \alpha_{ha}(t)\omega_{n,max}
+\end{eqnarray}
+当故障影响因子$\alpha_{ha}=0$变成$\alpha_{ha}=1$，其对应的空气密度就从$7\%$变化为$15\%$。
+
+\subsection{风力机LPV模型 ({\rm LPV Model of Wind Turbine})}
+空气动力学模型中的$C_p(\lambda(t),\beta(t))$是风力机呈现非线性的动态特
+性的主因。使用一阶泰勒公式对气动转矩展开，得：
+\begin{eqnarray}\label{e:8}
+T_a \approx \bar{T}_a(\bar{v}_r,\bar{\omega}_r,\bar{\beta}) +
+\frac{\partial{}T_a}{\partial{}\beta}\hat{\beta} +
+\frac{\partial{}T_a}{\partial{}v_r}\hat{v}_r +
+\frac{\partial{}T_a}{\partial{}\omega_r}\hat{\omega}_r
+\end{eqnarray}
+其中
+\begin{eqnarray}
+&&\left\{\begin{aligned}
+& \frac{\partial{}T_a}{\partial{}v_r} = \frac{\rho{}Av^2_r}{2\omega_r}
+(3C_p+v_r\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial{}v_r}) \\
+& \frac{\partial{}T_a}{\partial\omega_r} = \frac{\rho{}Av^3_r}{2\omega_r}
+(\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial\omega_r} - \frac{C_p}{\omega_r})  \\
+& \frac{\partial{}T_a}{\partial\beta} = \frac{\rho{}Av^3_r}{2\omega_r}
+\frac{\partial{}C_p}{\partial\beta}
+\end{aligned}
+\right.\
+\end{eqnarray}
+
+展开后的泰勒表达式的分量均为近似为
+风速$v_r$的线性函数，这意味着可将风速作
+为LPV模型的增益调度变量：
+\begin{eqnarray}
+\theta_{op}(t):=v_r(t)
+\end{eqnarray}
+
+同时将故障影响因子作为另一个增益调度变量：
+\begin{eqnarray}
+\theta_f(t):=\alpha_{ha}
+\end{eqnarray}
+
+选取系统状态变量，控制量分别为：
+$x(t)=[\beta(t),\dot{\beta}(t),\theta_\Delta(t),\omega_g(t),\omega_r(t)]^T$，
+$u(t)=\beta_{ref}(t)$。
+便可得出变桨距风力机系统的LPV模型：
+\begin{eqnarray}
+\dot{x}(t) &=& A(\theta_{op},\theta_f)x(t) + B_1(\theta_{op},\theta_f)w(t)\notag \\
+&&+ B_2(\theta_{op},\theta_f)u(t)
+\end{eqnarray}
+其中
+\begin{eqnarray}
+A(\theta_{op},\theta_f) = 
+\left[
+\begin{smallmatrix}
+0 & \omega^2_n(t) & 0  \\
+-1 & -2\zeta\omega^2_n(t) & 0  \\
+0 & 0 & 0 \\
+0 & 0 & \frac{K_{dt}}{J_g{}N_g}  \\
+\frac{1}{J_r}\frac{\partial{}T_a(\theta_{op}(t))}{\partial\beta} & 0 &
+-\frac{K_{dt}}{J_r} 
+\end{smallmatrix}
+\right. \notag\\
+\left.
+\begin{smallmatrix}
+ 0 & 0 \\
+ & 0 & 0 \\
+ -\frac{1}{N_g} & 1 \\
+-(\frac{B_{dt}}{J_g{}N^2_g} + \frac{B_g}{J_g}) & \frac{B_{dt}}{N_g{}J_g} \\
+ \frac{B_{dt}}{N_g{}J_r} &
+-\frac{B_{dt}+B_r}{J_r} + \frac{1}{J_r}\frac{\partial{}T_a(\theta_{op}(t))}{\partial\omega_r}
+\end{smallmatrix}
+\right]
+\end{eqnarray}
 
 
-4)~~关键词: 关键词一般3$\sim$8个, 英文关键词每个字母均为小写.
 
-5)~~标题: 文章标题一般包含一级标题、\!\!二级标题甚至三级标题等,
-例如: 2; 2.1; 2.1.1等, 每一级标题必须给出相应的英文翻译,
-且英文部分除第1个字母大写外其余均为小写.
 
-6)~~数学符号: 数学符号需用公式环境, 且与前后的文字之间没有空格, 如:
-函数$a, n, R$等.
 
-7)~~插图: 文章中的图应以.eps的格式插入, 且图中的有关说明应用中文,
-需要给出相应坐标的变量及单位. 图的标题应该有中英文两种形式,
-标题在图的正下方, 例子见第4节.
-
-8)~~表格: 表格统一要求三线表(即: 表格中没有竖线,
-只有三条横线(特殊情形可以为两条等), 且中英文标题在表格的正上方.
-例子见第5节.
-
-9)~~参考文献: 文章中的参考文献的引用应该按从小到大的顺序, 例如:
-
-期刊中的文章见文献\cite{1,2}, 会议中的论文见文献\!\cite{3},
-研究生论文一般只引用博士论文\!\textsuperscript{\cite{4}},
-也可以这样引用\!\textsuperscript{\cite{1,4,5,6}}.
-
-文章中引用参考文献时, 应该用上段所用的方式引用, 即:
-平齐时用命令\verb|\cite{...}|,
-上标时用\verb|\textsuperscript{\cite{...}}|.
 \section{应用环境({\rm Environment})}
-\begin{Thm}
-应用这个环境, 定理编号将自动生成.
-\end{Thm}
-\begin{Site}
-应用这个环境, 引理编号将自动生成.
-\end{Site}
-\begin{Cor}
-应用这个环境, 推论编号将自动生成.
-\end{Cor}
-\begin{Def}
-应用这个环境, 定义编号将自动生成.
-\end{Def}
-\begin{Sup}
-应用这个环境, 假设编号将自动生成.
-\end{Sup}
-\begin{Rem}{\fontsize{9.3pt}{11.6pt}\selectfont 注释内容是小五宋体.}\end{Rem}
-此定理的证明可以通过以下步骤形成:
-\begin{Ste}首先, 假设$\cdots$\end{Ste}
-\begin{Ste}其次, 证明$\cdots$\end{Ste}
-\begin{Ste}最后, 得到$\cdots$\end{Ste}
+
 \section{公式的例子({\rm Examples of equations})}
 \subsection{公式的应用环境({\rm Environment of equations})}
 公式请用环境\\
