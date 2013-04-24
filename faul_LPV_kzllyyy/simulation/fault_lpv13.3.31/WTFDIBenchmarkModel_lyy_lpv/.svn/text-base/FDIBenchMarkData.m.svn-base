@@ -1,0 +1,162 @@
+% script containing parameters for the kk-electronic - FDI Bench Mark Model
+% By Peter Fogh Odgaard, kk-electronic a/s, Viby J Denmark
+% Date 7.11.2008
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ts=1/100;
+Time=Ts:Ts:4400;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Wind data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+D_v_wind=[Time', 9+4*sin(0.01*Time)'];
+
+load winddata
+D_v_wind=[windtime windspeed];
+%% Wind Model
+seed1 = 256;
+seed2 = 894;
+turbulence_seeds=[seed1 seed2];
+R=57.5;
+H=87;
+k =4.7;
+a=2.2;
+alpha = 0.1;
+D_rotor=2*R;
+r = D_rotor/2;
+m = 1+alpha*(alpha-1)*R^2/(8*H^2);
+Length_scale = 600; %[m]
+L=Length_scale;
+Turbulence_intensity = 12;
+turb_int=Turbulence_intensity;
+T_sample=0.05;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pitch and Blade Model
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+omega_n=11.11;
+xi=0.6;
+rho=1.225;
+R=57.5;
+r0 = 1.5;
+
+% cq table
+load AeroDynamics
+
+%%Fault models%%
+%fault 6
+xi2=0.45;
+omega_n2=5.73;
+%fault 7
+xi3=0.9;
+omega_n3=3.42;
+
+%transfers to ss models
+[Apb,Bpb,Cpb,Dpb]=tf2ss([omega_n^2],[1 2*xi*omega_n omega_n^2]);
+[Apb1,Bpb1,Cpb1,Dpb1]=tf2ss([omega_n2^2],[1 2*xi2*omega_n2 omega_n2^2]);
+[Apb2,Bpb2,Cpb2,Dpb2]=tf2ss([omega_n3^2],[1 2*xi3*omega_n3 omega_n3^2]);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Drive Train Model
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B_dt=775.49;
+B_r=7.11;
+B_g=45.6;
+N_g=95;
+K_dt=2.7e9
+eta_dt=0.97;
+J_g=390
+J_r=55e6
+
+Addt=[-(B_dt+B_r)/J_r B_dt/N_g/J_r -K_dt/J_r; eta_dt*B_dt/N_g/J_g -(eta_dt*B_dt/N_g^2+B_g)/J_g eta_dt*K_dt/N_g/J_g; 1 -1/N_g 0];
+Bddt=[1/J_r 0; 0 -1/J_g;0 0];
+Cddt=[1 0 0;0 1 0];
+Dddt=[0 0;0 0];
+
+
+%fault models
+%fault 9
+eta_dt2=.92
+
+Addt2=[-(B_dt+B_r)/J_r B_dt/N_g/J_r -K_dt/J_r; eta_dt2*B_dt/N_g/J_g -(eta_dt2*B_dt/N_g^2+B_g)/J_g eta_dt2*K_dt/N_g/J_g; 1 -1/N_g 0];
+Bddt2=[1/J_r 0; 0 -1/J_g;0 0];
+Cddt2=[1 0 0;0 1 0];
+Dddt2=[0 0;0 0];
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Generator & Converter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+alpha_gc=1/20e-3;
+eta_gc=0.98;
+
+%Fault models
+%fault 8
+Constant_tau_gc=100;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Controller
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+K_opt=.5* rho* pi*R^2*eta_dt*R^3*0.4554/(N_g*8)^3
+
+K_i=1;
+K_p=4;
+Omega_nom=162;
+Omega_delta=15;
+P_r=4.8e6;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sensors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+m_vw=1.5;
+sigma_vm=0.5;
+Np_vm=0.0071;
+m_omega_r=0;
+sigma_omega_r=0.004*2*pi;
+Np_omega_r=2.3e-4;
+m_omega_g=0;
+sigma_omega_g=0.05;
+Np_omega_g=5e-4;
+m_tau_g=0;
+sigma_tau_g=90;
+Np_tau_g=.9;
+m_P_g=0;
+sigma_P_g=1e3;
+Np_P_g=10;
+m_Beta=0;
+sigma_Beta=0.2;
+Np_beta=1.5e-3;
+
+%fault models
+Constant_Beta_1_m1=5
+Gain_Beta_2_m2=1.2
+Constant_Beta_3_m1=10
+Constant_Omega_r_m1=1.4
+Gain_Omega_r_m2=1.1
+Gain_Omega_g_m1=0.9
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fault signals
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+D_Fault1=[Time' 1-[zeros(1,2000/Ts) ones(1,100/Ts) zeros(1,2300/Ts)]'];
+D_Fault2=[Time' 1-[zeros(1,2300/Ts) ones(1,100/Ts) zeros(1,2000/Ts)]'];
+D_Fault3=[Time' 1-[zeros(1,2600/Ts) ones(1,100/Ts) zeros(1,1700/Ts)]'];
+D_Fault4=[Time' 1-[zeros(1,1500/Ts) ones(1,100/Ts) zeros(1,2800/Ts)]'];
+D_Fault5=[Time' 1-[zeros(1,1000/Ts) ones(1,100/Ts) zeros(1,3300/Ts)]'];
+D_Fault6=[Time' 1-[zeros(1,2900/Ts) ones(1,100/Ts) zeros(1,1400/Ts)]'];
+D_Fault7=[Time' 1-[zeros(1,3400/Ts) (0:1/3000:2999/3000) ones(1,40/Ts) (2999/3000:-1/3000:0) zeros(1,900/Ts)]'];
+D_Fault8=[Time' 1-[zeros(1,3800/Ts) ones(1,100/Ts) zeros(1,500/Ts)]'];
+D_Fault9=[Time' 1-[zeros(1,4000/Ts) ones(1,200/Ts) zeros(1,200/Ts)]'];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Noise Seeds
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+min_seed = 0;
+max_seed = 999;
+% Generate random seeds for 13 'Random Number' Generators blocks
+seed = min_seed + (max_seed-min_seed).*rand(13, 1);
+% Round up to integer
+seed = ceil(seed);

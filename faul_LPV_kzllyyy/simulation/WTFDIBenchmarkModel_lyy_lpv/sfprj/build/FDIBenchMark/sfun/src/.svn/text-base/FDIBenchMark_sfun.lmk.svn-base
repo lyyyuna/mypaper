@@ -1,0 +1,33 @@
+CC     = "c:\program files\matlab\r2007b\sys\lcc\bin\lcc.exe"
+LD     = "c:\program files\matlab\r2007b\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "c:\program files\matlab\r2007b\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"c:\program files\matlab\r2007b\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"FDIBenchMark_sfun.obj"\
+	"FDIBenchMark_sfun_registry.obj"\
+	"c2_FDIBenchMark.obj"\
+	"lccstub.obj"\
+	"c:\program files\matlab\r2007b\sys\lcc\mex\lccdef.def"\
+	"c:\program files\matlab\r2007b\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"c:\program files\matlab\r2007b\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"c:\program files\matlab\r2007b\extern\lib\win32\lcc\libmex.lib"\
+	"c:\program files\matlab\r2007b\extern\lib\win32\lcc\libmx.lib"\
+	"c:\program files\matlab\r2007b\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"c:\program files\matlab\r2007b\extern\lib\win32\lcc\libut.lib"\
+
+INCLUDE_PATH= -I"c:\program files\matlab\r2007b\sys\lcc\include"  -I"c:\program files\matlab\r2007b\extern\include"  -I"c:\program files\matlab\r2007b\simulink\include"  -I"c:\program files\matlab\r2007b\stateflow\c\mex\include"  -I"c:\program files\matlab\r2007b\stateflow\c\debugger\include"  -I"c:\documents and settings\peodg\my documents\matlab\fdi bench mark model\wtfdibenchmarkmodel\wtfdibenchmarkmodel\sfprj\build\fdibenchmark\sfun\src"  -I"c:\documents and settings\peodg\my documents\matlab\fdi bench mark model\wtfdibenchmarkmodel\wtfdibenchmarkmodel" 
+ 
+
+FDIBenchMark_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o FDIBenchMark_sfun.mexw32 @FDIBenchMark_sfun.lmko
+FDIBenchMark_sfun.obj :	"FDIBenchMark_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "FDIBenchMark_sfun.c"
+FDIBenchMark_sfun_registry.obj :	"FDIBenchMark_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "FDIBenchMark_sfun_registry.c"
+c2_FDIBenchMark.obj :	"c2_FDIBenchMark.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_FDIBenchMark.c"
+lccstub.obj :	"c:\program files\matlab\r2007b\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c:\program files\matlab\r2007b\sys\lcc\mex\lccstub.c"
