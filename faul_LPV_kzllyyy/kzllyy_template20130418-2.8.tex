@@ -127,9 +127,9 @@ LPV gain scheduling technology; convex decomposition}}
 
 从控制的角度看，风速的变化和故障的发生导致了风力机的的动态特性在工作
 点附近发生非线性变化，又由于缺少风力机精确的数学模型，传统的控制器设
-计策略难以着手\cite{3,4}。//无论是传统的鲁棒技术\cite{3}还是一般的增益调度
+计策略难以着手\cite{3,4}。无论是传统的鲁棒技术\cite{3}还是一般的增益调度
 控制\cite{4}，对对象参数的变化和工作点的选取，要求都非常苛刻，不符合实
-际情况。//基于鲁棒控制的线性参数变化(Linear Parameter Varying, LPV)
+际情况。基于鲁棒控制的线性参数变化(Linear Parameter Varying, LPV)
 增益调度技术对这种动态特性变化显著的风力系统会非常有效\cite{5,6}。对
 海上风力系统来讲，鲁棒性和容错性都是必不可少的主要特性，而LPV控制
 方法恰恰能够同时处理由风速、故障带来的参数变化和模型本身描述不
@@ -177,30 +177,30 @@ T_a(t)=\frac{1}{2\omega_r(t)}\rho{}Av^3_r(t)C_p(\lambda(t),\beta(t))
 角$\theta_\delta(t)$，电机产生的转矩$T_g(t)$和发电机转
 速$\omega_g(t)$。模型如下：
 \begin{eqnarray}\label{e:2}
-J_r\dot{\omega_r}(t) &=& T_a(t) + \frac{B_{dt}}{N_g}\omega_g(t)\notag -K_{dt}\theta_\Delta(t)  \\
+J_r\dot{\omega}_r(t) &=& T_a(t) + \frac{B_{dt}}{N_g}\omega_g(t)\notag -K_{dt}\theta_\Delta(t)  \\
 && -(B_{dt}+B_r)\omega_r(t) \\
 \label{e:3}
-J_g\dot{\omega_g}(t) &=& \frac{K_{dt}}{N_g}\theta_\Delta(t) +\frac{B_{dt}}{N_g}\omega_r(t)\notag -T_g(t) \\
+J_g\dot{\omega}_g(t) &=& \frac{K_{dt}}{N_g}\theta_\Delta(t) +\frac{B_{dt}}{N_g}\omega_r(t)\notag -T_g(t) \\
 && -(\frac{B_{dt}}{N^2_g}+B_g)\omega_g(t) \\
 \label{e:4}
-\dot{\theta_\Delta}(t) &=& \omega_r(t)-\frac{1}{N_g}\omega_g(t)
+\dot{\theta}_\Delta(t) &=& \omega_r(t)-\frac{1}{N_g}\omega_g(t)
 \end{eqnarray}
 
 \subsection{包含故障信息的桨距执行器模型({\rm Pitch System Model Including Fault Model})}
 桨距执行器模型如下:
 \begin{eqnarray}\label{e:5}
-\ddot{\beta}(t)&=&-2\zeta\omega_n\dot{\beta}(t)-\omega^2_n\beta(t)
+\ddot{\beta}(t)&=&-2\xi\omega_n\dot{\beta}(t)-\omega^2_n\beta(t)
  +\omega^2_n\beta_{ref}(t-t_d)
 \end{eqnarray}
 其中$t_d$是变桨距执行器的时间常数，$\beta_{ref}(t)$是桨距角
 的参考值，$\omega_n$是变桨距执行器模型的自然振荡
-频率。$zeta$是变桨距执行器模型的阻尼系数。
+频率。$xi$是变桨距执行器模型的阻尼系数。
 
 桨距执行器中液压油空气含量过高的故障，其
-变化主要影响的是阻尼系数$\zeta$、自然振荡频
+变化主要影响的是阻尼系数$\xi$、自然振荡频
 率$\omega_n$。$\alpha_{ha}$为故障影响因子。其故障模型为:
 \begin{eqnarray}\label{e:6}
-\bar{\zeta}(t) &=& (1-\alpha_{ha}(t))\zeta_{min} + \alpha_{ha}(t)\zeta_{max} \\
+\bar{\xi}(t) &=& (1-\alpha_{ha}(t))\xi_{min} + \alpha_{ha}(t)\xi_{max} \\
 \label{e:7}
 \bar{\omega}_n(t) &=& (1-\alpha_{ha}(t))\omega_{n,min} + \alpha_{ha}(t)\omega_{n,max}
 \end{eqnarray}
@@ -219,13 +219,13 @@ T_a \approx \bar{T}_a(\bar{v}_r,\bar{\omega}_r,\bar{\beta}) +
 \begin{eqnarray}
 &&\left\{\begin{aligned}
 & \frac{\partial{}T_a}{\partial{}v_r} = \frac{\rho{}Av^2_r}{2\omega_r}
-(3C_p+v_r\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial{}v_r}) \\
+(3C_p+v_r\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial{}v_r}) \notag\\
 & \frac{\partial{}T_a}{\partial\omega_r} = \frac{\rho{}Av^3_r}{2\omega_r}
-(\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial\omega_r} - \frac{C_p}{\omega_r})  \\
+(\frac{\partial{}C_p}{\partial\lambda}\frac{\partial\lambda}{\partial\omega_r} - \frac{C_p}{\omega_r})  \notag\\
 & \frac{\partial{}T_a}{\partial\beta} = \frac{\rho{}Av^3_r}{2\omega_r}
 \frac{\partial{}C_p}{\partial\beta}
 \end{aligned}
-\right.\
+\right.
 \end{eqnarray}
 
 展开后的泰勒表达式的分量均为近似为
@@ -241,27 +241,27 @@ T_a \approx \bar{T}_a(\bar{v}_r,\bar{\omega}_r,\bar{\beta}) +
 \end{eqnarray}
 
 选取系统状态变量，控制量分别为：
-$x(t)=[\beta(t),\dot{\beta}(t),\theta_\Delta(t),\omega_g(t),\omega_r(t)]^T$，
+$x(t)=[\beta(t),\dot{\beta}(t),\theta_\Delta(t),\omega_g(t),\omega_r(t)]^\mathrm{ T }$，
 $u(t)=\beta_{ref}(t)$。
 便可得出变桨距风力机系统的LPV模型：
-\begin{eqnarray}
+\begin{eqnarray}\label{e:plant}
 \dot{x}(t) &=& A(\theta_{op},\theta_f)x(t) + B_1(\theta_{op},\theta_f)w(t)\notag \\
 &&+ B_2(\theta_{op},\theta_f)u(t)
 \end{eqnarray}
 其中
 \begin{eqnarray}
-A(\theta_{op},\theta_f) = 
+A(\theta_{op},\theta_f) &=&
 \left[
 \begin{smallmatrix}
 0 & \omega^2_n(t) & 0  \\
--1 & -2\zeta\omega^2_n(t) & 0  \\
+-1 & -2\xi\omega^2_n(t) & 0  \\
 0 & 0 & 0 \\
 0 & 0 & \frac{K_{dt}}{J_g{}N_g}  \\
 \frac{1}{J_r}\frac{\partial{}T_a(\theta_{op}(t))}{\partial\beta} & 0 &
--\frac{K_{dt}}{J_r} 
+-\frac{K_{dt}}{J_r}
 \end{smallmatrix}
 \right. \notag\\
-\left.
+&&\left.
 \begin{smallmatrix}
  0 & 0 \\
  & 0 & 0 \\
@@ -271,126 +271,389 @@ A(\theta_{op},\theta_f) =
 -\frac{B_{dt}+B_r}{J_r} + \frac{1}{J_r}\frac{\partial{}T_a(\theta_{op}(t))}{\partial\omega_r}
 \end{smallmatrix}
 \right]
+\notag\\%% second
+B_1(\theta_{op},\theta_f)&=&[0,0,0,0,\frac{1}{J_r}
+\frac{\partial{}T_a(\theta_{op}(t))}{\partial{}v_r}]^\mathrm{ T }
+\notag\\%% third
+B_2(\theta_{op},\theta_f)&=&[0, 1, 0, 0, 0]^\mathrm{ T }
+\notag
 \end{eqnarray}
 
-
-
-
-
-\section{应用环境({\rm Environment})}
-
-\section{公式的例子({\rm Examples of equations})}
-\subsection{公式的应用环境({\rm Environment of equations})}
-公式请用环境\\
- \verb|\begin{eqnarray}...\end{eqnarray}|
-
- 或者\\
-\verb|\begin{eqnarray*}...\end{eqnarray*}|\\
-生成.
-\subsection{几个实例({\rm Examples})}
-\begin{Exa}
+系统可以改写成仿射依赖型：
 \begin{eqnarray}
-{\Arrowvert x^{(1)}_{k+1}-x^{(1)}_k\Arrowvert}_\lambda&\leqslant&
-\frac{1}{1-h_1(i)}\Arrowvert x^{(1)}_{k+1}(0)-x^{(1)}_k(0)\Arrowvert+\notag\\
-&&\frac{h_2(i)}{1-h_1(i)}{\Arrowvert
-e^{(1)}_k\Arrowvert}_\lambda+\rho(Q),
+A(\theta_f,\theta_{op})\triangleq A + A^{\theta_{op}}(\theta_{op})
++A^{\theta_f}(\theta_f)
 \end{eqnarray}
-以及
+
+$A^{\theta_{op}}$是$A(\theta_f,\theta_{op})$中依赖于
+变参数$\theta_{op}$的部分，$A^{\theta_f}$是$A(\theta_f,\theta_{op})$中
+依赖于变参数$theta_f$的部分。$\theta_{op}$和$\theta_f$组成多面
+体$\Lambda$，其中$\theta_{f,min}<\theta_f<\theta_{f,max}$，$\theta_{op,min}<\theta_{op}<\theta_{op,max}$。
+$(\theta_f,\theta_{op})$所构成的顶点在多
+面体$\Lambda$内取值。
+
+\section{主动容错控制器设计({\rm AFTC Design Method})}
+容错控制器是在LPV技术框架下对传统的PI调节器的重新
+设计，如图\ref{fig:1}所示，选取发电机转速及其积分值作为观测器
+输出$y=[\omega_g,y_\omega]^\mathrm{ T }$，控制器输出桨距参考值$\beta_{ref}$控制风力机。本小节将设计
+一个与对象(\ref{e:plant})具有系统参数依赖关系的LPV控制器$K(\theta),\theta=(\theta_f,\theta_{op})$，即：
+\begin{eqnarray}\label{e:controller}
+&&\left\{\begin{aligned}
+\dot{x}_K(t) = A_K(\theta)x_K(t) + B_K(\theta)y(t) \\
+u(t) = C_K(\theta)x_K(t) + D_K(\theta)y(t)
+\end{aligned}
+\right.
+\end{eqnarray}
+\begin{center}
+\includegraphics [scale=1,trim=0 0 0 0]{structure.eps}\\
+\label{fig:1}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~\ref{fig:1}~~图形标题\\
+Fig.~\ref{fig:1}~~Title of figure }
+\end{center}
+对象(\ref{e:plant})与控制器(\ref{e:controller})所构成系统的状态空间表示为：
+\begin{eqnarray}\label{e:plant_cont}
+&&\left\{\begin{aligned}
+\dot{x}(t) &=& A(\theta)x(t) + B_1(\theta)w(t) + B_2(\theta)u(t) \\
+z(t) &=& C_1(\theta)x(t) + D_{11}(\theta)w(t) + D_{12}(\theta)u(t) \\
+y(t) &=& C_2(\theta)x(t) + D_{21}(\theta)w(t) + D_{22}(\theta)u(t)
+\end{aligned}
+\right.\notag\\
+\end{eqnarray}
+其对应的闭环系统为：
+\begin{eqnarray}\label{e:closedloop}
+&&\left\{\begin{aligned}
+\dot{x}_{cl} = A_{cl}(\theta)x_{cl} + B_{cl}(\theta)y \\
+z = C_{cl}(\theta)x_{cl} + D_{cl}(\theta)y
+\end{aligned}
+\right.
+\end{eqnarray}
+式中，
+\begin{eqnarray}
+  A_{cl}(\theta) &=& A_0(\theta) + \mathcal{BF}(\theta)\mathcal{C} \notag\\
+  B_{cl}(\theta) &=& B_0(\theta) + \mathcal{BF}(\theta)\mathcal{D}_{21} \notag\\
+  C_{cl}(\theta) &=& C_0 + \mathcal{D}_{12}\mathcal{F}(\theta)\mathcal{C} \notag\\
+  D_{cl}(\theta) &=& D_{11} + \mathcal{D}_{12}\mathcal{F}(\theta)\mathcal{D}_{21} \notag
+\end{eqnarray}
+且\\
+\begin{eqnarray}
+  A_0(\theta) &=&
+  \begin{bmatrix}
+    A(\theta) & ~~0 \\
+    0 & ~~0
+  \end{bmatrix},
+  B_0(\theta) =
+  \begin{bmatrix}
+    B_1(\theta) \\
+    0
+  \end{bmatrix}, \notag \\
+  C_0(\theta) &=& \begin{bmatrix}
+    C_1 & ~~0
+  \end{bmatrix} ,
+  \mathcal{B} = \begin{bmatrix}
+    0 & ~~B_2 \\
+    I & ~~0
+  \end{bmatrix}, \notag
+  \\
+  \mathcal{C} &=& \begin{bmatrix}
+  0 &~~ I\\
+  C_2 &~~ 0
+  \end{bmatrix},
+  \mathcal{D}_{12} = \begin{bmatrix}
+    0 &~~ D_{12}
+  \end{bmatrix},
+  \mathcal{D}_{21} = \begin{bmatrix}
+    0 \\
+    D_{21}
+  \end{bmatrix} \notag
+\end{eqnarray}
+
+
+
+
+
+\subsection{容错控制问题的提出 ({\rm Proposal of Fault-Tolerant Control Problem})}
+\textbf{问题1} 容错控制器的设计问题可以描述为：寻找一
+个LPV控制器$K(\theta),\theta=(\theta_f,\theta_{op})$，使
+得当$(\theta_f,\theta_{op})$在多面体$\Lambda$内变化时，闭环
+系统(\ref{e:closedloop})二次稳定，且$w$到$z$的闭环传递函数的$L_2$诱
+导范数小于$\gamma$。
+
+\begin{Site}\label{site:projection}(投影引理)
+给定一个对称阵$\Psi\in{}R^{m\times{}n}$，两个具有$m$列的矩
+阵$P$和$Q$，寻找具有适当维数的矩阵$\Omega$，使得：
+\begin{eqnarray}\label{e:projection}
+\Psi + P^\mathrm{ T }X^\mathrm{ T }Q + Q^\mathrm{ T }X{}P<0
+\end{eqnarray}
+令$W_P$，$W_Q$分别为矩阵$P$和$Q$的零空
+间，则不等式(\ref{e:projection})有解$X$的充分必要条件为：
 \begin{eqnarray}
 &&\left\{\begin{aligned}
-&\dot{x}(t)\begin{array}{l}\sum\limits_{i=0}^{2n_{x}}\end{array}=A^c x(t)+B^cu(t)+ E^c d(t),\\
-&z(t)=C^c x(t).
-\end{aligned}\right.\ \ t\in \mathbb{R}^+\notag\\
-\end{eqnarray}\end{Exa}
-\begin{Exa}几种不同的情况.
-\end{Exa}
+W^\mathrm{T}_P \Psi W_P < 0 \\
+W^\mathrm{T}_Q \Psi W_Q < 0
+\end{aligned}
+\right.
+\end{eqnarray}
+\end{Site}
 
-1)~~省略了矩阵中部分元素的例子.
+\begin{Site}\label{site:realbound}(有界实引理)下列命题等价：\\
+(1)~~对于所有可能的参数轨迹$\theta\in\Delta$，LPV闭环
+系统(\ref{e:closedloop})二次稳定且$w$到$z$的闭环传递函数
+的$L_2$诱导范数小于$\gamma$。\\
+(2)~~线性矩阵不等式(\ref{e:realbound})存在正定对
+称解$x_{cl}>0$，且$i=1,2,..r$，$r$为顶点个数，使：
 \begin{eqnarray}
-\begin{pmatrix}
-a_{11}& a_{12}&\dots &a_{1n}\\
-a_{21}& a_{22}&\dots &a_{2n}\\
-\vdots&\vdots&       &\vdots\\
-a_{n1}& a_{n2}&\dots &a_{nn}
-\end{pmatrix}
+\begin{bmatrix}\label{e:realbound}
+A^\mathrm{T}_{cl}(\theta_i)x_{cl}+x_{cl}A_{cl}(\theta_i) &
+x_{cl}B_{cl}(\theta_i) & C^\mathrm{T}_{cl}(\theta_i) \\
+B^\mathrm{T}_{cl}(\theta_i)x_{cl} & -\gamma{}I & D^\mathrm{T}_{cl}(\theta_i) \\
+C_{cl}(\theta_i) & D_{cl}(\theta_i) & -\gamma{}I
+\end{bmatrix}
+<0 \notag
+\\
+\end{eqnarray}
+\end{Site}
+
+\subsection{LPV控制器求解 ({\rm Computation of LPV Controller})}
+由于上述的参数轨迹$\theta\in\Lambda$是定义在连续的空间，如果对
+每一个点求解控制器，会涉及到无限多个LMIs，这是
+不可能求解的。本小节中，将无限维的问题转化为顶
+点的凸优化问题，通过求解有限个顶点的LMIs，得出
+满足$\gamma$的容错控制器。
+\begin{Thm}
+设$N_R$和$N_S$分别为$[B^\mathrm{T}_2, D^\mathrm{T}_{12}]$和$[C_2, D_{21}]$\newline
+核空间的基，$i=1,2,..,r$，$r$为顶点个数，则问题1有解的充要条
+件为存在矩阵$R,S\in{}R^{n\times{}n}$，满足
+下列线性矩阵不等式：
+\begin{eqnarray}
+% first LMI
+\label{e:19}
+\begin{bmatrix}
+N_R & 0 \\
+0 & I
+\end{bmatrix}^\mathrm{T}
+\begin{bmatrix}
+A_i{}R + RA^\mathrm{T}_i & RC^\mathrm{T}_{1i} & B_{1i} \\
+C_{1i}R & -\gamma{}I & D_{11i} \\
+B^\mathrm{T}_{1i} & D^\mathrm{T}_{11i} & -\gamma{}I
+\end{bmatrix}
+\begin{bmatrix}
+  N_R & 0 \\
+  0 & I
+\end{bmatrix}
+<0 \notag\\
+\\
+% the second LMI
+\label{e:20}
+\begin{bmatrix}
+  N_S & 0 \\
+  0 & I
+\end{bmatrix}^\mathrm{T}
+\begin{bmatrix}
+  A_i{}S+SA^\mathrm{T}_i    &  SC^\mathrm{T}_{1i}  &  B_{1i}  \\
+  C_{1i}S   &  -\gamma{}I   & D_{11i}  \\
+  B^\mathrm{T}_{1i}   &   D^\mathrm{T}_{11i}  &   -\gamma{}I
+\end{bmatrix}
+\begin{bmatrix}
+  N_S  &   0  \\
+  0    &   I
+\end{bmatrix}
+<0 \notag \\
+\end{eqnarray}
+\begin{eqnarray}
+% the third LMI
+\label{e:21}
+\begin{bmatrix}
+  R &~~& I \\
+  I &~~& S
+\end{bmatrix}
+\geq 0
+\end{eqnarray}
+\end{Thm}
+\textbf{证}~~~~
+根据引理\ref{site:realbound}，问题1存在一个$k$阶LPV容错
+控制器的充分必要条件是线性矩阵不等式(\ref{e:realbound})存
+在正定对称解$0<x_{cl}\in{}R^{(n+k)\times(n+k)}$，且
+式(\ref{e:realbound})可以改写为：
+\begin{eqnarray}\label{e:22}
+  \Psi_i + P^\mathrm{T}_x{}F_i{}Q + Q^\mathrm{T}F^\mathrm{T}_i{}P_x <0
+\end{eqnarray}
+式中
+\begin{eqnarray}
+  \Psi_i &=&
+  \begin{bmatrix}
+    A^\mathrm{T}_0(\theta_i)x_{cl}+x_{cl}A_0(\theta_i) ~~& x_{cl}B_0(\theta_i) & C^\mathrm{T}_0 \\
+    B^\mathrm{T}_0(\theta_i)x_{cl} & -\gamma{}I & D^\mathrm{T}_{11} \\
+    C_0 & D_{11} & -\gamma{}I
+  \end{bmatrix} \notag \\
+  P_x &=& \begin{bmatrix}
+  B^\mathrm{T}x_{cl} ~~&~~ 0 ~~&~~ D^\mathrm{T}_{12}
+  \end{bmatrix},
+  Q = \begin{bmatrix}C ~~&~~ D_{21} ~~&~~ 0\end{bmatrix} \notag
 \end{eqnarray}
 
-2)~~矩阵中小数点对齐的例子.
+
+由引理\ref{site:projection}可知，线性矩阵不等
+式(\ref{e:22})成立的充分必要条件是：
+ \begin{eqnarray} \label{e:23}
+   W^\mathrm{T}_{Px}\Psi_i{}W_{Px}<0,
+   W^\mathrm{T}_{Q}\Psi_i{}W_{Q}<0
+ \end{eqnarray}
+其中$W_{Px},W_Q$分别为$P_x,Q$零空间的任意基。
+
+由于
 \begin{eqnarray}
-&&A_1=\left[\begin{array}{r@{ }l@{~~~~}r@{ }l} 1& &-2&\\-2& &4&
-\end{array}\right],\\
-&&A_2=\left[\begin{array}{r@{.}l@{~~~~}r@{.}l} 1&1 &-2&7\\-2&3 &4&6
-\end{array}\right].
+  P_x &=& \begin{bmatrix}
+    \mathcal{B}^\mathcal{T} & ~~~0 ~~~& \mathcal{D}_{12}^\mathcal{T}
+  \end{bmatrix}
+  \begin{bmatrix}
+    x_{cl} & ~~~0~~~ & 0 \\
+    0 & I & 0\\
+    0 & 0 & I
+  \end{bmatrix}
 \end{eqnarray}
 
-3)~~调整公式字体大小的特例.
-
-用命令 \textbackslash displaystyle  可以调整在文字中过小的公式.
-$f(z)\thickapprox{\displaystyle\frac{1+\frac{1}{2}z+z^2+\frac{1}{2}z^3}{1-\frac{1}{2}z+z^2}}.$
-类似前面这样的例子.
-
-用命令 \textbackslash textstyle 可以调整公式中过大的情况. 如下:
+令向量$P=\begin{bmatrix}
+    \mathcal{B}^\mathcal{T} & ~~~0~~~ & \mathcal{D}_{12}^\mathcal{T}
+  \end{bmatrix}$，
+则$P$对应的零空间的任意基与$W_P$的关系为：
 \begin{eqnarray}
-&&\!\!\!\!\!{\bm z}^{\rm T}(t)\{A_q^{\rm T}[P(t)+I]A_q-[P(t)+I]\}{\bm z}(t)+ \nonumber\\
-&&\!\!\!\!\!{\textstyle\sum\limits_{i=1}^m}\varint\nolimits_{t-\tau_i}^t\!\!{\bm
-z}^{\rm T}(s)\{A_q^{\rm T}A_q-I\}{\bm z}(s){\rm d}s\leqslant 0.
+  W_{Px} =
+  \begin{bmatrix}
+    x^{-1}_{cl} & ~~~0~~~ & 0 \\
+    0 & I & 0 \\
+    0 & 0 & I
+  \end{bmatrix}
+  W_P
 \end{eqnarray}
 
-4)~~公式的编号问题.
+那么式(\ref{e:23})的第一个不等式可改写为：
+\begin{eqnarray}
+  W^\mathrm{T}_P \phi_i W_P < 0
+\end{eqnarray}
+其中\\
+\begin{eqnarray}
+  \phi_i =
+  \begin{bmatrix}
+    A^\mathrm{T}_0(\theta_i)x^{-1}_{cl}+x^{-1}_{cl}A_0(\theta_i) ~~& B_0(\theta_i) & x^{-1}_{cl}C^\mathrm{T}_0 \\
+    B^\mathrm{T}_0(\theta_i) & -\gamma{}I & D^\mathrm{T}_{11} \\
+    C_0x^{-1}_{cl} & D_{11} & -\gamma{}I
+  \end{bmatrix} \notag
+\end{eqnarray}
 
-有些地方对于公式的编号需要子公式编号, 也就是说,
-当这个环境之前的公式编号是(6)时, 那么此环境中的公式按照(7a), (7b),
-(7c),$\cdots$的顺序编号.
-\begin{subequations}
+令$N_R=\begin{bmatrix}
+  P_1 \\
+  P_2
+\end{bmatrix},
+N_S=\begin{bmatrix}
+  Q_1 \\
+  Q_2
+\end{bmatrix}$分别为$[
+  B^\mathrm{T}_2, D^\mathrm{T}_{12}]$和$[
+  C_2, D_{21}]$的零空间的任意基，则$P$和$Q$的零空间的基分别为：
 \begin{eqnarray}
-\dot{x}(t)&=&A_{i}x_{t}(0)+A_{i1}x_{t}(-r),  t\geqslant t_{0}.
+  W_P=\begin{bmatrix}
+    P_1 &~~ 0 \\
+    0 &~~ 0 \\
+    0 &~~ I \\
+    P_2 &~~ 0
+  \end{bmatrix},
+  W_Q=\begin{bmatrix}
+    Q_1 &~~ 0 \\
+    0 &~~ 0 \\
+    Q_2 &~~ 0 \\
+    0 &~~ I
+  \end{bmatrix}
 \end{eqnarray}
-在第1个子公式和第2个子公式之间可以添加文字内容.
-\begin{eqnarray}
- s:&=&\big\{(t_{0}, \pi(0)), \cdots
-(t_{k}, \pi(k)), \cdots |\notag\\
-&&t_{i}<t_{j}, i<j;\lim\limits_{k\rightarrow \infty}t_{k}=\infty
-\big\}.
-\end{eqnarray}
-在第2个子公式和第3个子公式之间同样可以添加文字内容.
-\begin{eqnarray}
-\left\{\begin{aligned}
-&\dot{x}(t)=A_{i}x_{t}(0)+A_{i1}x_{t}(-r),\\
-&y(t)=C_{i}x_{t}(0);t\geqslant t_{0}, i\in\{1, 2\},
-\end{aligned}\right.
-\end{eqnarray}
-\end{subequations}
 
-\section{插图({\rm Figures})}
-Latex对于图形的要求: 对于一般的图形, 只需要用软件Acrobat Reader打开,
-然后另存为.eps即可, 再利用下面的环境插入图形即可. 图形的位置由命令
-中“trim=0 0 0 0”来控制, 可以通过修正其中的4个参数来移动图形的位置.
-所给出的4个数字分别表示从图形的左边缘、\!\!下边缘、\!\!右边缘、\!\!上边缘被截去的值,
-正数表示从边缘截去的大小, 而负数表示从边缘加上的大小.
+因此，式(\ref{e:23})可以进一步转换为式(\ref{e:19})和式(\ref{e:20})所
+示的形式。
+
+条件$x_{cl}>0$等价于$\begin{bmatrix}
+  R &~~& I \\
+  I &~~& S
+\end{bmatrix}
+\geq 0$。 \\
+证毕。
+
+由上述定理，便可得LPV容错控制器的求解算法。
+
+\textbf{算法1}\\
+第一步~~计算满秩矩阵$M,N\in{}R^{n\times{}k}$，使得：
+\begin{eqnarray}
+  MN^\mathrm{T} = I - RS
+\end{eqnarray}
+第二步~~计算方程的唯一解$x_{cl}$：
+\begin{eqnarray}
+  \begin{bmatrix}
+    S &~~& I \\
+    N^\mathrm{T} && 0
+  \end{bmatrix}
+  =x_{cl}
+  \begin{bmatrix}
+    I &~~& R \\
+    0 && M^\mathrm{T}
+  \end{bmatrix}
+\end{eqnarray}
+第三步~~求解不等式(\ref{e:realbound})得：
+\begin{eqnarray}
+  \begin{bmatrix}
+    A_K(\theta) &~& B_K(\theta) \\
+    C_K(\theta) && D_K(\theta)
+  \end{bmatrix} \notag
+  \in
+\end{eqnarray}
+\begin{eqnarray}
+  Co\left\{K_i=\begin{bmatrix}
+    A_{Ki} &~~& B_{Ki} \\
+    C_{Ki} && D_{Ki}
+  \end{bmatrix},
+  i=1,2,..,r\right\}
+\end{eqnarray}
+
+最后，LPV容错控制器的形式为
+\begin{eqnarray}
+K=\sum_{i=1}^r\alpha_i{}K_i,\sum_{i=1}^r\alpha_i=1
+\end{eqnarray}
+
+
+
+\section{仿真结果 (\rm Simulation Result)}
+风力机仿真参数见表\ref{tab:1}。
 \begin{center}
-\includegraphics [scale=1,trim=0 0 0 0]{1-1.eps}\\
-\label{Fig1}
-{\fontsize{9.3pt}{11.6pt}\selectfont 图~1~~图形标题\\
-Fig.~1~~Title of figure }
-\end{center}
-\section{表格({\rm Tables})}
-\begin{center}
-{\CJKfamily{kai} 表~1~~模糊控制规则\\
-Table~1~~Fuzzy control rules}\\
+{\CJKfamily{kai} 表~\ref{tab:1}~~仿真参数\\
+Table~\ref{tab:1}~~Parameter value}\\
 \label{tab:1} \vskip 3pt
 \newcommand{\rb}[1]{\raisebox{1.9ex}[-2pt]{#1}}
 %\renewcommand\tabcolsep{2pt}
 {\fontsize{9.3pt}{11.6pt}\selectfont
-\begin{tabular}{@{ }lllllllr@{ }}\toprule
-&\multicolumn{7}{c}{$\Delta e$}\\
-\cmidrule(l){2-8} \rb{~~$e$} & NB & NM & NS & ZO & PS & PM &
-PB\\\midrule
-NM & NB & NM & NS & ZO & PS & PM & PB\\
-NS & NB & NM & NS & ZO & PS & PM & PB\\
-NO & NB & NM & NS & ZO & PS & PM & PB\\
-PO & NB & NM & NS & ZO & PS & PM & PB\\
-\bottomrule
-\end{tabular}}\end{center}
+\begin{tabular}{c|c|c|c}
+    \hline
+    参数        &     值        &  参数     & 值 \\ \hline
+    $K_{dt}$    & $2.7GNm/rad$  & $B_r$     & $27.8Nm/(rad/s)$ \\ \hline
+    $A$         & $10387m^2$    & $B_{dt}$  & $945kNm/(rad/s)$ \\ \hline
+    $\rho$      & $1.225kg/m^3$ & $B_g$     & $3.034Nm/(rad/s)$ \\ \hline
+    $\theta_{f,min}$& 0           & $\theta_{f,max}$ & $1$ \\ \hline
+    $J_r$       & $55\times10^6kgm^2$ & $\theta_{op,min}$ & $18m/s$ \\ \hline
+    $J_g$       & $390kgm^2$    & $\theta_{op,max}$ & $25m/s$ \\ \hline
+    $N_g$       & $95$ && \\ \hline
+  \end{tabular}
+}
+\end{center}
+
+在设计中为了体现系统的性能要求，可以
+对输出向量进行加权。$W_w$主要是对电机转速反馈进行整形，减弱
+风速抖动对稳定性的影响，$W_u$是对桨距参考值取高频分量，强化
+控制的作用。加权函数选取如下：
+\begin{eqnarray}
+  W_w &=& \frac{s^2+2\xi_\Omega\omega_\Omega{}s + \omega^2_\Omega}
+  {(s+z_I)(s+\xi_\Omega\omega_\Omega)} \\
+  W_u &=& \frac{s+z_3}{s+p_3}
+\end{eqnarray}
+其中，$\omega_\Omega=0.6283rad/s,\xi_\Omega=0.7,
+p_3=1.3425,\\z_3=13.425$。
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  参考文献
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
