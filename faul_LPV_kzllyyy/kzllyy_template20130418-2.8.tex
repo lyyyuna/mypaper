@@ -20,7 +20,7 @@
 \end{minipage}
 \footnotetext{\scriptsize \hskip -6pt
 \hspace*{-0.1em}收稿日期: xxxx$-$xx$-$xx; 收修改稿日期: xxxx$-$xx$-$xx.\\
-\hspace*{1.1em}$^{\dag}$通信作者. E-mail: lyyyuna@gmail.com; Tel.: +86 .\\
+\hspace*{1.1em}$^{\dag}$通信作者. E-mail: wh033098@163.com; Tel.: +86 .\\
 \hspace*{1.1em}基金项目: 国家杰出青年科学基金资助项目();
 教育部重点科研基金资助项目().}}
 \author{{\large {\CJKfamily{fsong}吴定会\makebox{$^{1}$}\makebox{$^{\dag}$},~~李意扬\makebox{$^{1}$}}}\\
@@ -67,17 +67,17 @@ LPV容错控
 \end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %          英文摘要
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%11%%%%%%%%%%%%%%%
 \vspace{.1cm}
 \begin{center}
 \parbox{\textwidth}{\setlength{\parindent}{1em}
-{\centering\Large\textbf{Active Fault-Tolerant LPV Control of
-Wind Turbines
+{\centering\Large\textbf{Active fault-tolerant LPV control of
+wind turbines
 \\}} \vspace{-1.2mm}
 \begin{center}
 WU Ding-hui\makebox{$^{1}$}\makebox{$^{\dag}$},~~LI Yi-yang\makebox{$^{1}$ }\\[2pt]
 \scriptsize{(1. School of Internet of Things, Jiangnan
-University,\\ Wuxi Jiangsu 214112, China)}
+University, Wuxi Jiangsu 214112, China)}
 \end{center}
 
 \vspace{-10pt}\footnotesize{\textbf{Abstract:}
@@ -117,39 +117,39 @@ LPV gain scheduling technology; convex decomposition}}
 最近20年，风机的总装机量增长迅速，从1992年的2.5GW到2010年的200GW\!\cite{1}。
 随着对风机效率和可靠性要求的提高，现代风机不再如传统风机那样一味追求
 高的产能，而是将更多的考虑成本问题，如可靠性，运维成本，风机的使用寿
-命等等。由于大多数风机安装在远离人烟的地区，将容错控制技术引入风力发
-电系统可以大幅减少维护的成本。容错控制是在保证当控制系统中的某些部件
+命等等\!\cite{2}。由于大多数风机安装在远离人烟的地区，将容错控制技术引入风力发
+电系统可以大幅减少维护的成本\!\cite{3}。容错控制是在保证当控制系统中的某些部件
 发生故障时，还能安全地完成控制任务的一种控制技术。容错控制包括被动容
-错和主动容错，其中被动容错控制\!\cite{2}是考虑正常工作和故障状态的参数值设计
-适当固定结构的控制器，在故障前后使用同样的控制器。主动容错\!\cite{2}则是在
+错和主动容错，其中被动容错控制\!\cite{4}是考虑正常工作和故障状态的参数值设计
+适当固定结构的控制器，在故障前后使用同样的控制器。主动容错\!\cite{5}则是在
 故障发生后重新调整控制器参数，或者改变控制器结构，与被动容错最大的不
-同在于依赖故障诊断机构。
+同在于依赖故障诊断机构\!\cite{5}。
 
 从控制的角度看，风速的变化和故障的发生导致了风力机的的动态特性在工作
 点附近发生非线性变化，又由于缺少风力机精确的数学模型，传统的控制器设
-计策略难以着手\cite{3,4}。无论是传统的鲁棒技术\cite{3}还是一般的增益调度
-控制\cite{4}，对对象参数的变化和工作点的选取，要求都非常苛刻，不符合实
+计策略难以着手\cite{6,7}。无论是传统的鲁棒技术\cite{6}还是一般的增益调度
+控制\cite{7}，对对象参数的变化和工作点的选取，要求都非常苛刻，不符合实
 际情况。基于鲁棒控制的线性参数变化(Linear Parameter Varying, LPV)
-增益调度技术对这种动态特性变化显著的风力系统会非常有效\cite{5,6}。对
-海上风力系统来讲，鲁棒性和容错性都是必不可少的主要特性，而LPV控制
+增益调度技术对这种动态特性变化显著的风力系统会非常有效\cite{8,9}。对
+风力系统来讲，鲁棒性和容错性都是必不可少的主要特性，而LPV控制
 方法恰恰能够同时处理由风速、故障带来的参数变化和模型本身描述不
 精确的问题。
 
 LPV容错控制器采用当前工作点附近的风速估计值和故障诊断机构输出的故
 障信息作为增益调度变量，将模型转换为仿射依赖型，在线性矩阵不等
-式(Linear Matrix Inequalities LMIs)约束下求出最优控制器。
+式(Linear Matrix Inequalities LMIs)约束下求出最优控制器\!\cite{10}。
 
 在一个实际的系统中，传感器，执行器和系统构件中均可能发生故障，从缓
 慢变化的到急性的。这些故障所表现出的共性就是系统动态特性的变化，从
 而使它们大部分都可被描述成一个线性变化的的参数。本文中，为了突出控
 制器的设计过程，选取了一种常见的单一故障，即桨距执行器的液压系统故
 障。当液油中混入过多空气，桨距执行器的动态特性就会变差，从而影响在
-额定风速之上时，风机的恒功率控制[7]。在实际运行和仿真中，虽然LPV的
+额定风速之上时，风机的恒功率控制\!\cite{11}。在实际运行和仿真中，虽然LPV的
 综合过程中LMI迭代求解计算量大，但LPV容错控制器是离线计算，在线运行
 时只需在每个采样周期，根据故障信息的变化，经过简单的算数运算，便可
 得出随增益调度变量变化的控制器，涉及的运算量很小。还有一个问题，在
 实际系统中，在有限的采样周期内获得故障信息的精确估计是不太可能的，值
-的庆幸的是Apkarian等人[8]已经证实LPV对时变参数的估计误差并不敏感，不
+的庆幸的是Apkarian等人\!\cite{12}已经证实LPV对时变参数的估计误差并不敏感，不
 需精确估计就可将LPV控制应用于系统的容错控制。
 
 本文组织如下：第2章描述了风力机和故障数学模型，并推导出了其对应的
@@ -159,7 +159,7 @@ LPV仿射依赖模型。在第3章将无限维的控制器转换为顶点的凸优化问题，并
 
 \section{风力机模型({\rm Wind Turbine Model})}
 在仿真中，使用了风力机的非线性模型，其中包括空气动力学子模型，传
-动机构子模型，桨距执行器子模型和故障模型[9]。
+动机构子模型，桨距执行器子模型和故障模型\!\cite{13}。
 \subsection{空气动力学模型({\rm Aerodynamic Model})}
 风力机的叶桨将风能转换到转子侧，以速度$\omega_r(t)$旋转。风的动能依赖
 于风速$v_r(t)$，空气密度$\rho$和叶桨的等效面积$A$。风能转换到转子侧的能
@@ -175,7 +175,7 @@ T_a(t)=\frac{1}{2\omega_r(t)}\rho{}Av^3_r(t)C_p(\lambda(t),\beta(t))
 比为$N_g$。为更好的模拟真实传动机构，考虑粘性摩擦，扭
 力衰减系数是$B_{dt}$，扭转刚度是$K_{dt}$。传动系统的输出是扭矩
 角$\theta_\delta(t)$，电机产生的转矩$T_g(t)$和发电机转
-速$\omega_g(t)$。模型如下：
+速$\omega_g(t)$。产生的电能$P_g(t)$是由转换效率$\eta_g$决定。模型如下：
 \begin{eqnarray}\label{e:2}
 J_r\dot{\omega}_r(t) &=& T_a(t) + \frac{B_{dt}}{N_g}\omega_g(t)\notag -K_{dt}\theta_\Delta(t)  \\
 && -(B_{dt}+B_r)\omega_r(t) \\
@@ -183,7 +183,8 @@ J_r\dot{\omega}_r(t) &=& T_a(t) + \frac{B_{dt}}{N_g}\omega_g(t)\notag -K_{dt}\th
 J_g\dot{\omega}_g(t) &=& \frac{K_{dt}}{N_g}\theta_\Delta(t) +\frac{B_{dt}}{N_g}\omega_r(t)\notag -T_g(t) \\
 && -(\frac{B_{dt}}{N^2_g}+B_g)\omega_g(t) \\
 \label{e:4}
-\dot{\theta}_\Delta(t) &=& \omega_r(t)-\frac{1}{N_g}\omega_g(t)
+\dot{\theta}_\Delta(t) &=& \omega_r(t)-\frac{1}{N_g}\omega_g(t) \\
+P_g(t) &=& \eta_g\omega_g(t)T_g(t)
 \end{eqnarray}
 
 \subsection{包含故障信息的桨距执行器模型({\rm Pitch System Model Including Fault Model})}
@@ -294,7 +295,7 @@ $(\theta_f,\theta_{op})$所构成的顶点在多
 
 \section{主动容错控制器设计({\rm AFTC Design Method})}
 容错控制器是在LPV技术框架下对传统的PI调节器的重新
-设计，如图\ref{fig:1}所示，选取发电机转速及其积分值作为观测器
+设计\!\cite{14}，如图1所示，选取发电机转速及其积分值作为观测器
 输出$y=[\omega_g,y_\omega]^\mathrm{ T }$，控制器输出桨距参考值$\beta_{ref}$控制风力机。本小节将设计
 一个与对象(\ref{e:plant})具有系统参数依赖关系的LPV控制器$K(\theta),\theta=(\theta_f,\theta_{op})$，即：
 \begin{eqnarray}\label{e:controller}
@@ -307,8 +308,8 @@ u(t) = C_K(\theta)x_K(t) + D_K(\theta)y(t)
 \begin{center}
 \includegraphics [scale=1,trim=0 0 0 0]{structure.eps}\\
 \label{fig:1}
-{\fontsize{9.3pt}{11.6pt}\selectfont 图~\ref{fig:1}~~图形标题\\
-Fig.~\ref{fig:1}~~Title of figure }
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~1~~容错控制系统框图\\
+Fig.~1~~Structure of Fault-Tolerant Control }
 \end{center}
 对象(\ref{e:plant})与控制器(\ref{e:controller})所构成系统的状态空间表示为：
 \begin{eqnarray}\label{e:plant_cont}
@@ -610,7 +611,7 @@ N_S=\begin{bmatrix}
   i=1,2,..,r\right\}
 \end{eqnarray}
 
-最后，LPV容错控制器的形式为
+最后，LPV容错控制器的形式为：
 \begin{eqnarray}
 K=\sum_{i=1}^r\alpha_i{}K_i,\sum_{i=1}^r\alpha_i=1
 \end{eqnarray}
@@ -633,8 +634,8 @@ Table~\ref{tab:1}~~Parameter value}\\
     $A$         & $10387m^2$    & $B_{dt}$  & $945kNm/(rad/s)$ \\ \hline
     $\rho$      & $1.225kg/m^3$ & $B_g$     & $3.034Nm/(rad/s)$ \\ \hline
     $\theta_{f,min}$& 0           & $\theta_{f,max}$ & $1$ \\ \hline
-    $J_r$       & $55\times10^6kgm^2$ & $\theta_{op,min}$ & $18m/s$ \\ \hline
-    $J_g$       & $390kgm^2$    & $\theta_{op,max}$ & $25m/s$ \\ \hline
+    $J_r$       & $55\times10^6kgm^2$ & $\theta_{op,min}$ & $16m/s$ \\ \hline
+    $J_g$       & $390kgm^2$    & $\theta_{op,max}$ & $28m/s$ \\ \hline
     $N_g$       & $95$ && \\ \hline
   \end{tabular}
 }
@@ -652,6 +653,56 @@ Table~\ref{tab:1}~~Parameter value}\\
 其中，$\omega_\Omega=0.6283rad/s,\xi_\Omega=0.7,
 p_3=1.3425,\\z_3=13.425$。
 
+与LPV主动容错控制对比的是一个普通的PI调节器，其参数为$K_P=4.234,K_I=0.978$。
+仿真时间$60s$，以下为仿真结果图。
+
+\begin{center}
+\includegraphics [scale=0.8,trim=0 0 0 0]{wind.eps}\\
+\label{fig:wind}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~2~~风速\\
+Fig.~2~~Wind Velocity }
+\end{center}
+\begin{center}
+\includegraphics [scale=0.8,trim=0 0 0 0]{omega_r_nofault.eps}\\
+\label{fig:ono}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~3~~容错控制下转子转速\\
+Fig.~3~~Rotor Speed with Fault-Tolerant Control }
+\end{center}
+\begin{center}
+\includegraphics [scale=0.8,trim=0 0 0 0]{omega_r_fault.eps}\\
+\label{fig:ofault}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~4~~无容错控制下转子转速\\
+Fig.~4~~Rotor Speed without Fault-Tolerant Control }
+\end{center}
+\begin{center}
+\includegraphics [scale=0.8,trim=0 0 0 0]{P_g_nofault.eps}\\
+\label{fig:Pno}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~5~~容错控制下电功率\\
+Fig.~5~~Electrical Power with Fault-Tolerant Control }
+\end{center}
+\begin{center}
+\includegraphics [scale=0.8,trim=0 0 0 0]{P_g_fault.eps}\\
+\label{fig:Pfault}
+{\fontsize{9.3pt}{11.6pt}\selectfont 图~6~~无容错控制下电功率\\
+Fig.~6~~Electrical Power without Fault-Tolerant Control }
+\end{center}
+
+图2所示的是风速变化曲线，风速在额定风速以上，此时控制的目标是实现
+恒功率控制。图3-图6均为有故障时不同控制器的效果图。从图3和图4看，虽然
+低速侧转子转速对比效果不明显，但经过传动机构后，差别就被
+放大，体现在发电机产生的功率上。从图5和图6看，在没有容错控制器的
+情况下，产生的功率波动为$4.78\times10^6W\sim4.82\times10^6W$，而有
+容错控制的情况下，功率波动在$4.79\times10^6W\sim4.81\times10^6W$。从而
+减轻对电网的压力。
+
+
+\section{结论 ({\rm Conclusions})}
+本文依据LPV系统的鲁棒$H\infty$控制原理，分别以输入风速、故障信息作为
+变增益参数，建立
+了风能转换系统故障模型的LPV控制方程，求解LMIs，得到系统
+离线顶点控制器。最后在仿真模型中嵌入该LPV容错控制器，仿
+真结果表明，所设计的控制器能有效地抑制故障带来的发电机
+产生功率的波动，控制效果满意。
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -662,37 +713,92 @@ p_3=1.3425,\\z_3=13.425$。
 \begin{thebibliography}{99} \vskip 7pt
 \setlength{\parskip}{-2pt}  %段落之间的竖直距离
 %1
-\bibitem{1}ARIMOTO S, KAWAMURA S, MIYAZAKI F. Bettering operation of
- robotics by learning[J]. \textit{Journal of Robotic System}, 1984, 12(2): 123 -- 140.
+\bibitem{1}Global Wind Energy Council. Global wind report -- annual market
+update 2011 [R]. Brussels Belgium: Global Wind Energy Council,
+2012.
+
 %2
 \bibitem{2}
-YAO Zhongshu, WANG Hongfei, YANG Chengwu. A sort of iterative
-learning control algorithm for tracking of robot trajectory[J].
-\textit{ACTA Armamentar}II, 2004, 25(3): 330 -- 334.\\
-(姚仲舒, 王宏飞, 杨成梧. 一种机器人轨迹跟踪的迭代学习控制方法[J].
-兵工学报, 2004, 25(3): 330 -- 334.)
+DOBRILA O, STEFANSEN R. \textit{Fault tolerant wind turbine control} [M].
+Denmark: Technical  University  of  Denmark, 2007.
+
 %3
-\bibitem{3}DOGRUEL M, OZGUNZER U. Stability of hybrid systems[C] //\textit{Proceedings of IEEE International Symposium on Intelligent
-Control}. New York: IEEE, 1994, 8: 129 -- 134.
+\bibitem{3}
+LI S B, SAUTER D, AUBRUN C. Stability guaranteed active fault-tolerant control of networked control systems [J]. \textit{Journal of Control Science and Engineering}. 2008: 22 -- 31.
+
 %4
-\bibitem{4}LI B. \textit{The main algorithm research on financial time
-series data mining}[D]. Hefei: University of Science and Technology
-of China, 2001.
+\bibitem{4}
+TAO G, JOSHI S M, MA X L. Adaptive state feedback and tracking
+ control of systems with actuator failures [J].
+ \textit{IEEE transactions on Control Systems Technology}, 2001, 46(1): 78 -- 95.
+
+%5
+\bibitem{5}
+LIAO F, WANG J L, YANG G H. Reliable robust flight tracking control:
+An LMI approach [J].
+\textit{IEEE transactions on Control Systems Technology}, 2002, 10(1): 76 -- 89.
+
 %6
-\bibitem{5}WANG R X. \textit{Random Process}[M]. Xi'an : Xi'an Jiaotong University
-Press, 1993.
+\bibitem{6}
+扶凌云, 何勇, 吴敏. 基于时滞的$H_\infty$滤波器设计及其在网络中的
+应用 [J]. 控制理论与应用, 2010, 27(4): 517 -- 522. \\
+FU Lingyun, HE Yong, WU Min. H-infinity filter design based on
+time-delay and its application to network [J].
+ \textit{Control Theory \& Ap-plications}, 2010, 27(4): 517 -- 522.
+
 %7
-\bibitem{6}HAYKIN S, BROCKETT R W. Adaptive filtering theory[M] //\textit{Essays in Control}. New York, American: Prentice Hall, 1996.
+\bibitem{7}
+BIANCHI F D, BATTISTA H D, MANTZ R J. \textit{Wind Turbine Control
+Systems -- Principle, Modelling and Gain Scheduling Design} [M].
+London: Springer, 2007.
+
+%8
+\bibitem{8}
+刘香霞, 沈艳霞, 潘庭龙, 万红淑. 基于LPV的直驱式永磁同步风电系统控制器设计[C].
+// \textit{中国控制会议}. 烟台, 2011, 7: 5178 -- 5181.\\
+LIU Xiangxia, SHEN Yanxia, PAN Ting-long, WAN Hongshu.
+LPV Based Direct-driven Permanent Magnet Synchronous Wind Power System Controller Design [C].
+// \textit{Chinese Control Conference}. Yantai, 2011, 7: 5178 -- 5181.
+
+%9
+\bibitem{9}
+SLOTH C, ESBENSEN T, STOUSTRUP J.
+Active and Passive Fault-T olerant LPV Control of Wind T urbines[c].
+// \textit{American Control Conference}. Baltimore, 2010, 2: 4640 -- 4646.
+
+%10
+\bibitem{10}
+ALLERHAND L I, SHAKED U. $H_\infty$Robust stability and stabilization of
+linear switched systems with dwell time[J].
+\textit{IEEE Transactions on Automatic Control},
+ 2011, 56(2): 381 -- 386.
+
+%11
+\bibitem{11}
+秦生升, 胡国文, 顾春雷等. 风力发电系统的恒功率非线性$H_\infty$鲁棒控制[J].
+控制理论与应用, 2012, 29(5): 617 -- 622.
+QIN Shengsheng, HU GuoWen, GU Chunlei. 
+Nonlinear H-infinity robust control of constant power for wind power system[J]. 
+\textit{Control Theory \& Ap-plications}, 2012, 29(5): 617 -- 622.
+%12
+\bibitem{12}
+APKARIAN P, GAHINET P, BECKER G. Self-scheduled $H_\infty$ control of linear parameter-varying systems: a design example[J].
+\textit{Automatica}, 1995, 31(9): 1251--1261.
+
+%13
+\bibitem{13}
+ESBENSEN T, SLOTH C.
+ \textit{Fault-Tolerant Control of Wind Turbines}[M].
+ Aalborg University, 2009: 16--21, 100--104.
+
+%14
+\bibitem{14}
+MOHAMMADPOUR J, SCHERER C W.
+\textit{Control of Linear Parameter Varying Systems with Applications}[M].
+New York: Springer, 2012: 303 -- 337.
+
 \end{thebibliography}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 附录
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \vskip 7pt
-\normalsize\textbf{ 附录~~~~附录标题}(Appendix~~Title of appendix)\\
-\indent
- {\fontsize{9.3pt}{11.6pt}\selectfont{
- 附录内容.}}
- \vskip 7pt
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 作者简历
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -700,9 +806,12 @@ Press, 1993.
 {\CJKfamily{kai} 作者简介:}\\
  {\scriptsize
 \indent
-\textbf{张~~~~三}~~~~(1961---), 男, 作者简历, 目前研究方向, E-mail: zhangsan@sina.com.cn;\\
-\indent \textbf{李某某}~~~~(1958---), 女, 作者简历, 目前研究方向,
-E-mail: limm@sina.com.cn.}
+\textbf{吴定会}~~~~(1970---), 男, 副教授, 硕士生导师, 目前研究方向为
+风力发电控制技术,
+E-mail: wh033098@163.com;\\
+\indent
+\textbf{李意扬}~~~~(1990---), 男, 硕士研究生, 目前研究方向为故障诊断与容错控制,
+E-mail: lyyyuna@gmail.com.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  分栏结束
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
