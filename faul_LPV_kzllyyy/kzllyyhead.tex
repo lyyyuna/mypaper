@@ -87,16 +87,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %define the format like [1-2]
-\makeatletter
-\def\@compress@cite#1{%  % This is executed for each number
-  \advance\@tempcnta\@ne % Now \@tempcnta is one more than the previous number
-  \ifnum #1=\@tempcnta   % Number follows previous--hold on to it
-        \def\@h@ld{\citedash \citeform{#1}}%
-  \else   %  non-successor -- dump what's held and do this one
-     \@h@ld \@citea \citeform{#1}%
-     \let\@h@ld\@empty
-  \fi \@tempcnta#1\let\@citea\citepunct
-} \makeatother
+%\makeatletter
+%\def\@compress@cite#1{%  % This is executed for each number
+%  \advance\@tempcnta\@ne % Now \@tempcnta is one more than the previous number
+%  \ifnum #1=\@tempcnta   % Number follows previous--hold on to it
+%        \def\@h@ld{\citedash \citeform{#1}}%
+%  \else   %  non-successor -- dump what's held and do this one
+%     \@h@ld \@citea \citeform{#1}%
+%     \let\@h@ld\@empty
+%  \fi \@tempcnta#1\let\@citea\citepunct
+%} \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
