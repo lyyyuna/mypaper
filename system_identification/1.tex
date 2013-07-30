@@ -1,0 +1,60 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx}
+
+\begin{document}
+
+\section{title}
+
+Fault Diagnosis of Variable Pitch for Wind Turbine Based on Multi-innovation Forgetting Gradient  Identification Algorithm
+
+\section{abstract}
+
+This paper presents the design procedure of variable pitch system fault diagnosis for wind turbines. 
+The considered variable pitch system model is characterized by second order differential equation, and then transformed into discretization equation and difference equation. We transform the fault diagnosis problem into a parameter estimation issue, and the multi-innovation forgetting gradient (MIFG) identification algorithm is adopted. Because the MIFG use not only current data but also the past data at each iteration, the parameter estimation accuracy is improved compared to the stochastic gradient (SG) identification algorithm.
+The validity of fault diagnosis using MIFG algorithm for pitch system is verified by simulation example.
+
+\section{introduction}
+
+Variable pitch system plays an important role in wind turbines, especially when the wind speed is above the rated one. However, the pitch system is very easy to suffer kinds of. As many wind turbines are located offshore, unscheduled maintenance service may be quite costly. So, it would be beneficial for the wind turbine system to discover the fault when it occurs.
+
+Due to wind power generation in China just at
+the starting stage, fault diagnosis researches of hydraulic
+system and variable pitch system for wind power generator are
+less, at present hydraulic system fault diagnosis are mainly:
+Shi Hongyan has studied high order statistics on hydraulic
+system fault diagnosis-fuzzy neural network method in [1] to
+solve low signal-to-noise ratio of fault characteristic and given
+an example in the form of valve controlled cylinder system as
+the research object.  Pan Hong has studied hydraulic system
+leak detection method based on wavelet analysis and the
+change of pressure curve is detected by a pressure sensor
+which is transformed by wavelet transform in [2].  In [3],
+Wang Shaoping has adopted integration BP neural network to
+carry on fault diagnosis with the detection of pump pressure,
+flow and casing vibration signal to determine the pump fault
+types. Angell.c has studied on the expert system of hydraulic
+system fault diagnosis, which is focused on providing
+detection, prediction, compensation and fault diagnosis
+functions in [4].
+
+There are mainly three different faults can happen to pitch system. These are: pump wear, hydraulic leakage, high air content in the hydraulic oil. They all change the dynamics of the pitch actuator system and make the pitch uncontrollable. Therefore, it should be detected within 100s before the pressure has drop to half the nominal pressure. This implies that these kinds of fault do not change the structure of the pitch system, but do change the system parameters. And we can convert the problem of fault diagnosis into the issue of system identification.
+
+It is well-known that the recursive least-squares (RLS) algorithm is based on all previous data, thus has faster con-vergence rate than the SG algorithm, but the SG algorithm
+requires less computational effort than the RLS algorithm. In
+order to enhance the convergence rate of the SG algorithm,
+we present multi-innovation stochastic gradient (MISG) algo-rithms based on finite previous data, i.e., the MISG approaches
+use not only the current data but also the past data at each
+iteration, thus parameter estimation accuracy can be improved.
+The MISG algorithms have advantages of the SG and RLS
+algorithms. This is a tradeoff between the two algorithms, the MISG algorithms have faster convergence rate than the
+SG algorithms and less computational burden than the RLS algorithms.
+
+The rest of the paper is organized as follows. Section 2
+derives a difference equation from the 2nd order differential equation and analyze the  different faults' impact on the dynamics of pitch system. Sections 3 analyzes the convergence properties of the SG and MISG algorithms to show
+the advantages of the proposed MISG algorithm and presents the MISG algorithm with a forgetting factor in order to track the time-varying parameters. Section 4 presents some simulation result for the result of this paper and followed by the conclusion in section 5.
+
+\section{model of pitch system for wind turbine with fault}
+
+\subsection{}
+\end{document} 
