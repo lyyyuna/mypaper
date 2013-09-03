@@ -1,5 +1,5 @@
 SyncTeX Version:1
-Input:1:C:/Users/lyy/Desktop/wind/paper/system_identification/2.tex
+Input:1:F:/git_up/mypaper/system_identification/system_identification/2.tex
 Input:2:d:/application2/CTEX/MiKTeX/tex/latex/base/article.cls
 Input:3:d:/application2/CTEX/MiKTeX/tex/latex/base/size10.clo
 Input:4:d:/application2/CTEX/MiKTeX/tex/latex/ams/math/amsmath.sty
@@ -15,7 +15,7 @@ Input:13:d:/application2/CTEX/MiKTeX/tex/latex/graphics/graphics.sty
 Input:14:d:/application2/CTEX/MiKTeX/tex/latex/graphics/trig.sty
 Input:15:d:/application2/CTEX/MiKTeX/tex/latex/00miktex/graphics.cfg
 Input:16:d:/application2/CTEX/MiKTeX/tex/latex/pdftex-def/pdftex.def
-Input:17:C:/Users/lyy/Desktop/wind/paper/system_identification/2.aux
+Input:17:F:/git_up/mypaper/system_identification/system_identification/2.aux
 Input:18:d:/application2/CTEX/UserData/tex/context/base/supp-pdf.mkii
 Input:19:d:/application2/CTEX/MiKTeX/tex/latex/amsfonts/umsa.fd
 Input:20:d:/application2/CTEX/MiKTeX/tex/latex/amsfonts/umsb.fd
@@ -25,7 +25,7 @@ Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!1422
+!1438
 {1
 [1,31:4736286,49431838:26083328,44695552,0
 [1,31:8209694,49431838:22609920,43581440,0
@@ -11600,8 +11600,8 @@ k1,357:30819615,49431838:11141120
 ]
 !32321
 }8
-Input:22:C:/Users/lyy/Desktop/wind/paper/system_identification/2.aux
-!79
+Input:22:F:/git_up/mypaper/system_identification/system_identification/2.aux
+!87
 Postamble:
 Count:6980
 !26
