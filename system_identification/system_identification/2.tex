@@ -1,0 +1,357 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx}
+
+\begin{document}
+
+\section{title}
+
+Fault Diagnosis of Variable Pitch for Wind Turbine Based on Multi-innovation Forgetting Gradient Identification Algorithm
+
+\section{abstract}
+
+This paper presents the design procedure of variable pitch system fault
+diagnosis for wind turbines. The considered variable pitch system model is
+characterized by second order differential equation, and then transformed into
+discretization equation and difference equation. We transform the fault diagnosis problem into a parameter estimation issue, and the multi-innovation forget-
+ting gradient (MIFG) identification algorithm is adopted. Because the MIFG
+use not only current data but also the past data at each iteration, the parameter estimation accuracy is improved compared to the stochastic gradient (SG)
+identification algorithm. The validity of fault diagnosis using MIFG algorithm
+for pitch system is verified by simulation example.
+
+\section{introduction}
+
+Today, wind energy has contributed to a large part of world power production\cite{ref:1}, and variable pitch system has play a important role in wind turbine. Since most wind turbines are located in remote areas, they are expected to produce energy with reliability and stability\cite{ref:2}. An effective way to ensure this is to adopt advanced fault diagnosis technology, even though it may result in less power production in some cases\cite{ref:3}.
+
+The wind turbine operates in four operational zones governed by the mean wind velocity as depicted in Fig.\ref{fig:1}. In zone 1, the turbine is standstill; zone 2 is optimized to capture the maximum wind power; in zone 3, the pitch system works to keep constant power production; in zone 4, the wind velocity is too high and the wind turbine is kept shutdown\cite{ref:4}. The hydraulic pitch system fault directly affects the production stability when the turbine is in zone 3. At present, fault diagnosis research of hydraulic variable pitch system for wind turbine are mainly as follows. In \cite{ref:8}, Wang has studied to carry on fault diagnosis of pressure with integration BP neural network theory. In \cite{ref:9}, qualitive and quantitative analysis are combined. To combine detection, prediction, compensation and fault diagnosis together, Angell.c has adopted expert system in \cite{ref:10}. In \cite{ref:11}, Sloth uses extended kalman filter to estimate the tower acceleration caused by pitch system, after comparing with the estimated acceleration value using fault data and true tower acceleration sensor value, Sloth's study is able to determine which pitch is uncontrollable and the degree.
+
+In this paper, we try to convert the fault diagnosis problem into a system identification issue. The following faults may happen to pitch system, they are: pump wear, hydraulic leakage, high air content in the hydraulic oil\cite{ref:5}. These faults change the dynamics of the pitch system and make the system uncontrollable. In system identification view, the pitch system with fault can be viewed as a time-varying system. An effective way to estimate the time-varying system is within the framework of multi-innovation forgetting gradient identification (MIFG) algorithm.
+
+A few work has been done to deal with time-varying system's parameter estimation. In 1995, Guo and Ljung studied the estimation error of recursive least squares (RLS) with a forgetting factor (RFFLS for short)\cite{ref:6}, they assumed that the error $v(t)$ and parameter drift $w(t)$ can be modeled as white noise. In 2006, Ding presented analysis of multi-innovation gradient type identification\cite{ref:7}, which finaly proved that system identification method do have high precision in time-varying system.
+
+The rest of the paper is organized as follows. Section 2 gives the differential equation model of pitch system, and use a new way to convert it into a difference equation model. In Section 3, analysis of MIFG is given, which mainly focus on how to choose the forgetting factor $\lambda$. Section 4 contains a simulation result and followed by the conclusion in Section 5.
+
+\section{Model of Pitch System}
+
+The purpose of this section is to explain how the pitch system is modeled. The pitch system ajusts the pitch of a blade by rotating it according to wind velocity. The system is a hydraulic system as shown in Fig.
+
+\textbf{ÊèíÂÖ•ÂõæÁâá}
+
+\subsection{Differential Model of Pitch System}
+
+The hydraulic pitch is modeled as a second order system, described as:
+
+\begin{eqnarray}\label{e:1}
+\frac{\beta(s)}{\beta_{ref}(s)} &=& \frac{\omega^2_n}{s^2 + 2\zeta\omega_n{}s+\omega_n^2} \\
+\ddot{\beta}(t) &=& -2\zeta\omega_n\dot{\beta}(t) - \omega^2_n\beta(t) + \omega^2_n\beta(t) + \omega^2_n\beta_{ref}(t)
+\end{eqnarray}
+where: \\
+$\beta(t)$ is the pitch angle,\\
+$\beta_{ref}(t)$ is the reference to the pitch angle,\\
+$\omega_n$ is the natural frequency of the pitch model, \\
+$\zeta$ is the damping ratio of the pitch model
+
+\subsection{Difference Model of Pitch System}
+
+Since the algorithm will finally be ported to a computer or some embedded processor, it is necessary to change the Eq.\ref{e:1} into the difference one. There are many conventional ways to transform the Laplace equation, like bilinear transform and Euler transform, but these methods are simple and will lose accuracy during transformation, which is difficult to meet the industrial requirements.
+
+From the given plant $G(s)$ and sampling period $T$, we can obtain the only linearization model $G(z)$ using a new method called impulse invariance transformation\cite{ref:ding1}, which can gurantee the accuracy during transformation from continuous linear model to discrete model.
+
+First, we denote
+$$a := -2\zeta\omega_n+\frac{\sqrt{4\zeta^2\omega^2_n-4\omega_n^2}}{2}$$\\
+$$b := -2\zeta\omega_n-\frac{\sqrt{4\zeta^2\omega^2_n-4\omega_n^2}}{2}$$\\
+$$G(s) := \frac{\beta(s)}{\beta_{ref}(s)} = \frac{ab}{s^2+(a+b)s+ab}$$
+then, using the impulse invariance transformation, the discrete equation is:
+
+\begin{eqnarray}
+  G(z) &=& \frac{1}{2\pi{}j}\oint_c G(s) \frac{z}{z-e^{Ts}}ds \notag\\
+        &=& \frac{1}{2\pi{j}}\oint_c\frac{ab}{(s+a)(s+b)}\frac{1}{1-e^{Ts}z^{-1}}ds \notag \\
+        &=& \frac{1}{b-a}\frac{ab(e^{-aT}-e^{-bT})z^{-1}}
+        {1 - (e^{-aT}+e^{-bT})z^{-1} + e^{-(a+b)T}z^{-2}}
+\end{eqnarray}
+then, the difference equation can be obtained:
+\begin{eqnarray}
+  G(z) &=& y(t)/u(t) \notag \\
+  (b-a)[1 - (e^{-aT}+e^{-bT})z^{-1} + e^{-(a+b)T}z^{-2}]y(t) &=&
+  [ab(e^{-aT}-e^{-bT})z^{-1}]u(t) \notag \\
+\end{eqnarray}
+finally:
+\begin{eqnarray}
+y(t) - (e^{-aT}+e^{-bT})y(t-1) + e^{-(a+b)T}y(t-2) \notag \\
+= \frac{ab}{b-a}(e^{-aT}-e^{-bT})u(t-1)
+\end{eqnarray}
+the identification model can be expressed as:
+\begin{eqnarray} \label{e:time-varying}
+  y(t) = \varphi^\mathrm{T}\theta(t) + v(t)
+\end{eqnarray}
+where \\
+$\theta(t):=[- (e^{-aT}+e^{-bT}), e^{-(a+b)T}, \frac{ab}{b-a}(e^{-aT}-e^{-bT})]^\mathrm{T}$, \\ $\varphi(t):=[y(t-1), y(t-2),u(t-1)]^\mathrm{T}$ ,\\
+$v(t)$ is the zero mean white noise.\\
+
+\subsection{Fault Model of Pitch System}
+
+The faults considered for pitch system are: pump wear, hydraulic leakage, high air content. They can be modeled as follows.
+\begin{eqnarray}
+  \tilde{\zeta}(t) &=& (1-\alpha_{pw}(t))\zeta + \alpha_{pw}(t)\zeta_{pw} \notag \\
+  \tilde{\omega}_n(t) &=& (1-\alpha_{pw}(t))\omega_n + \alpha_{pw}(t)\omega_{n,pw} \\
+  \tilde{\zeta}(t) &=& (1-\alpha_{hl}(t))\zeta + \alpha_{hl}(t)\zeta_{hl} \notag \\
+  \tilde{\omega}_n(t) &=& (1-\alpha_{hl}(t))\omega_n + \alpha_{hl}(t)\omega_{n,hl} \\
+  \tilde{\zeta}(t) &=& (1-\alpha_{ha}(t))\zeta + \alpha_{ha}(t)\zeta_{ha} \notag \\
+  \tilde{\omega}_n(t) &=& (1-\alpha_{ha}(t))\omega_n + \alpha_{ha}(t)\omega_{n,ha}
+\end{eqnarray}
+where \\
+$\alpha_{pw}$ is an indicator for the pump wear, \\
+$\alpha_{hl}$ is an indicator for the hydraulic leakage, \\
+$\alpha_{ha}$ is an indicator for the high air content in oil.
+
+The parameters for the above three faults are shown in the table.
+
+\begin{tabular}{|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Fault & Parameters \\\hline\hline
+  No Fault & $\omega_n=11.11rad/s,\zeta=0.6$ \\\hline
+  Pump Wear & $\omega_{n,pw}=7.27rad/s,\zeta_{pw}=0.75$ \\\hline
+  Hydraulic Leakage & $\omega_{n,hl}=3.42rad/s,\zeta_{n,hl}=0.9$ \\\hline
+  High Air Content in the Oil & $\omega_{n,ha}=5.73rad/s,\zeta_{n,ha}=0.45$ \\
+  \hline
+\end{tabular}
+
+\section{Analysis of MIFG}
+
+Innovation is defined as useful information which can improve parameter estimation accuracy\cite{ref:dinf6}. Consider the least square and gradient stochastic algorithms, the identification system is:
+\begin{equation}
+  y(t) = \varphi^\mathrm{T}(t)\theta + v(t)
+\end{equation}
+where, $y(t)\in{}R$ is output, $\theta(t)\in{}R^n$ is parameter vector to be identified, $\varphi\in{}R^n$ is the information vector consisting of the system input-output data, $v(t)$ is the stochastic noise with zero mean. The general identification algorithm is:
+\begin{equation}
+  \hat{\theta}(t) = \hat{\theta}(t-1) + L(t)e(t)
+\end{equation}
+where $L(t)\in{}R^n$ is gain vector, $e(t):=y(t)-\varphi^\mathrm{T}(t)\hat{\theta}(t-1)\in{}R$ is scalar innovation, that is single innovation.
+
+We extend the single innovation to multi-innovation, which means that \\
+$E(p,t)=\begin{bmatrix}
+  e(t)\\
+  e(t-1)\\
+  \vdots \\
+  e(t-p+1)
+\end{bmatrix}\in{}R^p$, $p$ is the innovation length.
+
+The least square identification algorithm converges fast, but will suffer from high computation due to covariance matrix. gradient stochastic identification algorithm has a small mount of computation, but converges really slow. Both types of algorithm is not suitable in wind turbine system. By applying the multi-innovation into gradient stochastic algorithm, we will have a new algorithm which can compute quickly and converge fast. In order to track a time-varying system, we also apply a forgetting factor $\lambda$, that is MIFG algorithm.
+
+
+
+\subsection{How to Choose Forgetting Factor and Innovation Length}
+
+The purpose of this subsection is to give short discussion on how to choose $\lambda$ and $p$.
+Consider the time-varying system \ref{e:time-varying}, where $\theta(t)\in{}R^n$ is the time-varying parameter vector to be identified.
+
+The MIFG algorithm of estimating $\theta(t)$ may be expressed as :
+\begin{eqnarray}
+  \hat{\theta}(t) &=& \hat{\theta}(t-1) + \frac{\Phi(t)}{r(t)}[Y(t) - \Phi^\mathrm{T}\theta(t-1)], \label{e:mifg1} \\
+  r(t) &=& \lambda{}r(t-1)  + \|\varphi(t)\|^2, 0<\lambda<1, r(0)>0, \label{e:mifg2}\\
+  \Phi(p,t) &=& [\varphi(t), \varphi(t-1), \ldots, \varphi(t-p+1)]\in{}R^{n\times{}p}, \label{e:mifg3}\\
+  Y(p,t) &=& [y(t), y(t-1), \ldots, y(t-p+1)]^{\mathrm{T}}\in{}R^p. \label{e:mifg4}
+\end{eqnarray}
+
+In engineering, the parameter estimation accuracy is meassured by $\delta_a := \|\hat{\theta}(t) - \theta(t)\|^2$, but as the parameter vector $\theta(t)$ is unknown, it is impossible to obtain $\delta_a$. It is necessary for us to analyze the upper bound of estimation error, and can be simplified as Theorem 1.
+
+Here, we assume that the information vector $\varphi(t)$ is persistently exciting, that is, there exist constants $0<\alpha\leq\beta<\infty$ and an integer $N\geq{}n$ such that the following persistent excitation condition holds\cite{Ljung,1999}:
+\begin{equation}
+  \alpha{}I \leq \frac{1}{N}\sum^{N-1}_{i=0}\varphi(t+i)\varphi^\mathrm{T}(t+i)\leq \beta{}I a.s., t>0.
+\end{equation}
+
+For the system \ref{e:time-varying} and the MIFG algorithm in \ref{e:mifg1}-\ref{e:mifg4}, $r(0)$ is chosen by $\frac{\alpha}{1-\lambda}\leq{}r(0)\leq\frac{nN\beta}{1-\lambda}$, let the innovation length $p=N$ and $E[\|\hat{\theta}(0) - \theta(0)\|^2] = \delta_0 < \infty$, the observation noise $\{v(t)\}$ and the parameter changing rate ${w(t):=\theta(t)-\theta(t-1)}$ are stochastic sequences with zero mean, and the sequences $\{v(t)\}$ and $\{w(t)\}$ satisfy
+\begin{eqnarray}
+  E[v(t)]=0, E[w(t)]=0, \\
+  E[v^2(t)]\leq\sigma^2_v<\infty, E[\|w(t)\|^2] \leq^2_w < \infty.
+\end{eqnarray}
+
+Next, we define the noise vectors as following: °¢°¢
+$w(t)=\theta(t)-\theta(t-1)$, we can define the noise vector, \\
+$V(p,t) :=
+\begin{bmatrix}
+  v(t)\\
+  t(t-1)\\
+  \vdots \\
+  v(t-p+1)
+\end{bmatrix}\in R^p,$\\
+$W(p,t):=
+\begin{bmatrix}
+  0 \\
+  \varphi^\mathrm{T}(t-1)w(t-1) \\
+  \varphi^\mathrm{T}(t-2)[w(t-1)+w(t-2)] \\
+  \vdots \\
+  \varphi^\mathrm{T}(t-p+1)\sum^{p-1}_{j=1}w(t-j)
+\end{bmatrix}\in{}R^p
+$\\
+and the parameter estimation error vector $\hat{\theta}(t)-\theta(t)$ is denoted as $\tilde{\theta}(t)$, and by applying \ref{e:mifg1}:
+\begin{eqnarray}
+  \tilde{\theta}(t) &=& \hat{\theta}(t)-[\theta(t-1) + w(t)] \notag \\
+  &=& [I-\frac{\Phi(p,t)\Phi^\mathrm{T}}{r(t)}] \tilde{\theta}(t-1) \notag\\
+  && +\frac{\Phi(p,t)[-W(p,t)+V(p,t)]}{r(t)}-w(t). \label{e:estimation error}
+\end{eqnarray}
+as the expectation \\
+\begin{eqnarray}
+  E[\|\Phi(p,t)V(p,t)\|^2] &\leq& p^2\beta\sigma^2_v, \notag \\
+  &=&  N^2\beta\sigma^2_v
+  \leq \frac{N^2\beta(1-\lambda)^2\sigma^2_v}{\alpha^2} \notag \\
+  E[\|\Phi(p,t)W(p,t)\|^2] &\leq& \frac{(p-1)p^3\beta^2\sigma^2_w}{2} \leq \frac{p^4\beta^2\sigma^2_w}{2} \notag \\
+  &=& \frac{N^4\beta^2\sigma^2_w}{2}
+  \leq \frac{N^4\beta^2(1-\lambda)^2\sigma^2_w}{2\alpha^2} \label{e:noise}
+\end{eqnarray}
+and
+\begin{eqnarray}
+  I-\frac{\Phi(p,t)\Phi^T(p,t)}{r(t)} &\leq& [1-\frac{\alpha(1-\lambda)}{n\beta}]I \notag\\
+  &=& (1-\rho)I
+\end{eqnarray}
+
+By taking norm and expectation of both side of Eq.\ref{e:estimation error} and using the inequality $\|x+y\|^2\leq(1+a)\|x\|^2+(1+a^{-1}\|y\|^2), (a>0)$, we can obtain:
+\begin{eqnarray}
+  E\|\tilde{\theta}(t)\|^2 &\leq& (1+a)(1-\rho)E[\|\hat{\theta}(t-1)\|^2] + \notag\\
+   && 3(1+a^{-1})[\frac{N^4\beta^2(1-\lambda)^2\sigma^2_w}{2\alpha^2} + \notag \\
+   &&   \frac{N^2\beta(1-\lambda^2)\sigma^2_v}{\alpha^2} + \sigma^2_w] \label{e:esti expecta}
+\end{eqnarray}
+We take $a$ to satisfy $0<a<\frac{\rho}{1-\rho}$, that is $0<(1+a)(1-\rho)<1$, then the expectation Eq.\ref{e:esti expecta} turns into
+\begin{eqnarray}
+  E[\|\tilde{\theta}(t)\|^2] &\leq& [(1+a)(1-\rho)]^t{}E[\|\tilde{\theta}(0)\|^2] +\notag \\
+  &&  \frac{3(1+a^{-1})}{1-(1+a)(1-\rho)}[\frac{N^4\beta^2(1-\lambda)^2\sigma^2_w}{2\alpha^2} +\notag \\
+  &&  \frac{N^2\beta(1-\lambda)^2\sigma^2_v}{\alpha^2} + \sigma^2_w] \notag \\
+  &\leq& [(1+a)(1-\rho)]^t\sigma_0 + \\
+  && \frac{3(1+a^{-1})}{1-(1+a)(1-\rho)}[\frac{N^4\beta^2(1-\lambda)^2\sigma^2_w}{2\alpha^2} + \notag \\
+  && \frac{N^2\beta(1-\lambda)^2\sigma^2_v}{\alpha^2} + \sigma^2_w]  \label{e:upperbound1}
+\end{eqnarray}
+and we can denote
+\begin{eqnarray}
+  [\frac{N^4\beta^2(1-\lambda)^2\sigma^2_w}{2\alpha^2} + \frac{N^2\beta(1-\lambda)^2\sigma^2_v}{\alpha^2} + \sigma^2_w] &:=& f(\lambda) \notag \\
+  \frac{3(1+a^{-1})}{1-(1+a)(1-\rho)} &:=& g(a)
+\end{eqnarray}
+To get the upper bound of the estimation error, we must minimize the right hand side of the Eq.\ref{e:upperbound1}, let:
+\begin{equation}
+  \frac{dg(a)}{da}=0
+\end{equation}
+and as we define a to be positive, we can obtain the best value $a_0=\frac{1}{\sqrt{1-\rho}}-1$ ,
+and the correspond minimum $g_{min}$ is \\
+$$\frac{3}{(1-\sqrt{1-\rho})^2}$$\\
+and the minimum upper bound can be expressed as \\
+$$[\sqrt{1-\rho}]^t\delta_0 + g_{min}f(\lambda)$$
+Since $[\sqrt{1-\rho}]^t\sigma_0$ is very small, we can omit it.  To get the minimum $f_{min}$, just let:
+\begin{eqnarray}\label{e:f}
+  \frac{df(\lambda)}{\lambda}&=&0
+\end{eqnarray}
+Eq.\ref{e:f} is a four-order equation, and generally has four solution to get the best forgetting factor. 
+
+From the above analysis, we conclude the following guide to choose the best forgetting factor:
+\begin{itemize}
+  \item if parameter $\rho$ is small, it will generate small estimation error upper bound, which means $\alpha$ and $\beta$ should be close enough,
+  \item from Eq.\ref{e:noise}, the system noise should be as small as possible to get a small estimation error bound,
+  \item also from Eq.\ref{e:f}, a small innovation length $N$ will produce small estimation error upper bound.
+\end{itemize}
+
+\section{Simulation}
+
+
+
+
+
+\begin{thebibliography}{0}
+\bibitem{lit:1}
+I.~Munteanu, A.~Bratcu, N.A.~Cutululis, A Two Loop Optimal Control of Flexible
+Drive Train Variable Speed Wind Power Systems, in \emph{Proceedings of the 16th
+IFAC Word Congress}, 4--8, 2005.
+
+\bibitem{lit:2}
+I.~Munteanu, N.A.~Cutululis, A.~Bratcu, Using a Nonlinear Controller to Optimize
+a Variable Speed Wind Power System, \emph{Journal of Electrical Engineering},
+ 6(4): 147-154, 2006.
+
+\bibitem{lit:3}
+B.~Boukhezzar, L.~Lupu, H.~Siguerdidjane, M.~Hand, Multivariable Control Strategy
+for Variable Speed, Variable Pitch Wind Turbine, \emph{Renewable Energy}, 32(8):
+1273--1287, 2007.
+
+\bibitem{lit:4}
+M.~Steinbuch, Optimal Multivariable Control of a Wind Turbine with Variable Speed,
+\emph{Wind Engineering}, 11(3): 153--163, 1987.
+
+\bibitem{lit:5}
+Yang Yong, Ruan Yi, Ren Zhibing, Single Neuron Controller of VSCF Wind Power
+Generation System, \emph{Micromotors}, 42(9): 60--65, 2009.
+
+\bibitem{lit:6}
+Wu Dinghui, Ji Zhicheng, Two-Frequency-Loop Optimal Control for Wind Energy
+Conversion System Based on $ H_\infty $, \emph{Journal of Jiangnan University},
+6: 683--687, 2009.
+
+\bibitem{lit:7}
+Inlian Munteanu, Antoneta Iuliana Brarcu, Nicolaos Antonic Cutululis, Optimal
+Control of Wind Energy Systems, Springer, 2008.
+
+\bibitem{lit:8}
+Chen Wang, George Weiss, Self-scheduled LPV Control of a Wind Driven
+Doubly-Fed Induction Generator, in \emph{Proceedings of the 45th IEEE Conference on
+Decision}, 1246--1251, 2006.
+
+\bibitem{lit:9}
+Deng Ying, Zhou Jie, LPV $ H_\infty $ Controller Design for a Wind Power Generator,
+in \emph{2008 IEEE}, 873--878, 2008.
+
+\bibitem{lit:10}
+P.~A.~Pkarian, P.~G.~Ahinet, G.~Becker, Self-scheduled $ H_\infty $ Control of
+Linear Parameter-varying Systems: a Design Example, \emph{Automatica}, 31(9),
+1251--1261, 1995.
+
+\bibitem{lit:1}
+I.~Munteanu, A.~Bratcu, N.A.~Cutululis, A Two Loop Optimal Control of Flexible
+Drive Train Variable Speed Wind Power Systems, in \emph{Proceedings of the 16th
+IFAC Word Congress}, 4--8, 2005.
+
+\bibitem{lit:2}
+I.~Munteanu, N.A.~Cutululis, A.~Bratcu, Using a Nonlinear Controller to Optimize
+a Variable Speed Wind Power System, \emph{Journal of Electrical Engineering},
+ 6(4): 147-154, 2006.
+
+\bibitem{lit:3}
+B.~Boukhezzar, L.~Lupu, H.~Siguerdidjane, M.~Hand, Multivariable Control Strategy
+for Variable Speed, Variable Pitch Wind Turbine, \emph{Renewable Energy}, 32(8):
+1273--1287, 2007.
+
+\bibitem{lit:4}
+M.~Steinbuch, Optimal Multivariable Control of a Wind Turbine with Variable Speed,
+\emph{Wind Engineering}, 11(3): 153--163, 1987.
+
+\bibitem{lit:5}
+Yang Yong, Ruan Yi, Ren Zhibing, Single Neuron Controller of VSCF Wind Power
+Generation System, \emph{Micromotors}, 42(9): 60--65, 2009.
+
+\bibitem{lit:6}
+Wu Dinghui, Ji Zhicheng, Two-Frequency-Loop Optimal Control for Wind Energy
+Conversion System Based on $ H_\infty $, \emph{Journal of Jiangnan University},
+6: 683--687, 2009.
+
+\bibitem{lit:7}
+Inlian Munteanu, Antoneta Iuliana Brarcu, Nicolaos Antonic Cutululis, Optimal
+Control of Wind Energy Systems, Springer, 2008.
+
+\bibitem{lit:8}
+Chen Wang, George Weiss, Self-scheduled LPV Control of a Wind Driven
+Doubly-Fed Induction Generator, in \emph{Proceedings of the 45th IEEE Conference on
+Decision}, 1246--1251, 2006.
+
+\bibitem{lit:9}
+Deng Ying, Zhou Jie, LPV $ H_\infty $ Controller Design for a Wind Power Generator,
+in \emph{2008 IEEE}, 873--878, 2008.
+
+\bibitem{lit:10}
+P.~A.~Pkarian, P.~G.~Ahinet, G.~Becker, Self-scheduled $ H_\infty $ Control of
+Linear Parameter-varying Systems: a Design Example, \emph{Automatica}, 31(9),
+1251--1261, 1995.
+\end{thebibliography}
+
+
+
+
+
+
+
+\end{document} 
