@@ -200,15 +200,29 @@ P_g(t) &=& \eta_g\omega_g(t)T_g(t)
 的参考值，$\omega_n$是变桨距执行器模型的自然振荡
 频率。$\xi$是变桨距执行器模型的阻尼系数。
 
-桨距执行器中液压油空气含量过高的故障，其
-变化主要影响的是阻尼系数$\xi$、自然振荡频
-率$\omega_n$。$\alpha_{ha}$为故障影响因子。其故障模型为:
+%%%%%%%%%%%%%%%%%%%%%%
+%% 一审修改 2013.10
+%%%%%%%%%%%%%%%%%%%%%%
+液压系统混入空气之后，将对液压油的体积弹性模数和其粘度产生影响\cite{add:3}。变现为当
+混入空气量增大，液压油的压力波传播速度减慢，使得油液动力粘度呈线性
+增高，使得桨距性能变化，产生震荡。震荡在数学模型上就表现为
+$\xi, \omega_n$的变化。
+$\alpha_{ha}$为故障影响因子。其故障模型\cite{13}为:
 \begin{eqnarray}\label{e:6}
 \bar{\xi}(t) &=& (1-\alpha_{ha}(t))\xi_{min} + \alpha_{ha}(t)\xi_{max} \\
 \label{e:7}
 \bar{\omega}_n(t) &=& (1-\alpha_{ha}(t))\omega_{n,min} + \alpha_{ha}(t)\omega_{n,max}
 \end{eqnarray}
+
+根据文献\cite{13}，
 当故障影响因子$\alpha_{ha}=0$变成$\alpha_{ha}=1$，其对应的空气密度就从$7\%$变化为$15\%$。
+当密度小于$7\%$，这时混入的空气对系统
+影响不大，不必进行容错控制。当密度大于$15\%$，油液本身所具有的高刚度大大减少，
+导致执行器动作失误，自动控制失灵，工作机构产生爬行，严重破坏稳定性，这时，应该立即停机，
+以免发生机械事故。
+%%%%%%%%%%%%%%%%%%%%%%
+%% 一审修改 2013.10
+%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{风力机LPV模型 ({\rm LPV Model of Wind Turbine})}
 空气动力学模型中的$C_p(\lambda(t),\beta(t))$是风力机呈现非线性的动态特
@@ -687,13 +701,7 @@ p_3=1.3425,\\z_3=13.425$。
 仿真时间$60s$，在第$30$时，加入故障，
 即故障影响因子由$\alpha_{ha}=0$变成$\alpha_{ha}=1$。仿真结果为图2$\sim$图4。
 
-图2所示的是风速变化曲线，风速在额定风速以上，此时控制的目标是实现
-恒功率控制。图3是发电机转速图，图3(a)为正常情况的转速图，发电机转速维持
-在$162rad/s$附近。图3(b)和3(c)分别为采用LPV容错控制器和PI控制器的转速图，
-在第$30$秒故障发生后，LPV容错控制器能有效抑制故障带来的影响。
-图4是发电机功率，图4(a)为正常情况功率图，图4(b)和4(c)分别是LPV容错控制器和PI控制器
-作用下功率图，且均在30秒处发生故障。可以看出，故障对LPV容错控制下的恒功率输出几乎
-没有影响，而传统PI控制下功率出现了大幅的抖动。
+
 
 \begin{center}
 \includegraphics [scale=0.6,trim=0 0 0 0]{wind.eps}\\
@@ -714,7 +722,13 @@ Fig.~3~~Generator Speed }
 Fig.~4~~Electrical Power }
 \end{center}
 
-
+图2所示的是风速变化曲线，风速在额定风速以上，此时控制的目标是实现
+恒功率控制。图3是发电机转速图，图3(a)为正常情况的转速图，发电机转速维持
+在$162rad/s$附近。图3(b)和3(c)分别为采用LPV容错控制器和PI控制器的转速图，
+在第$30$秒故障发生后，LPV容错控制器能有效抑制故障带来的影响。
+图4是发电机功率，图4(a)为正常情况功率图，图4(b)和4(c)分别是LPV容错控制器和PI控制器
+作用下功率图，且均在30秒处发生故障。可以看出，故障对LPV容错控制下的恒功率输出几乎
+没有影响，而传统PI控制下功率出现了大幅的抖动。
 
 
 \section{结论 ({\rm Conclusions})}
@@ -820,6 +834,12 @@ APKARIAN P, GAHINET P, BECKER G. Self-scheduled $H_\infty$ control of linear par
 ESBENSEN T, SLOTH C.
  \textit{Fault-Tolerant Control of Wind Turbines}[M].
  Aalborg University, 2009: 16--21, 100--104.
+
+% add:3 一审修改
+\bibitem{add:3}
+王彦华. 液压系统液油中气泡的防范[J]. 装备与制造, 2007, 9: 82 -- 83.\\
+WANG Yanhua. Preventing the Bubbles from Oil in Hydraulic System[J]. 
+\textit{Equipment Manufacturing Technology}, 2007, 9: 82 -- 83. 
 
 %14
 \bibitem{14}
