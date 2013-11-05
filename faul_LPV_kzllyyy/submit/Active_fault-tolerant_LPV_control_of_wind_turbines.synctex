@@ -1,7 +1,7 @@
 SyncTeX Version:1
-Input:1:F:/git_up/mypaper/faul_LPV_kzllyyy/kzllyy_template20130418-2.8.tex
-Input:2:F:/git_up/mypaper/faul_LPV_kzllyyy/kzllyyhead.tex
-Input:3:F:/git_up/mypaper/faul_LPV_kzllyyy/kzllyy.cls
+Input:1:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/Active_fault-tolerant_LPV_control_of_wind_turbines.tex
+Input:2:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/kzllyyhead.tex
+Input:3:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/kzllyy.cls
 Input:4:d:/application2/CTEX/MiKTeX/tex/latex/base/size11.clo
 Input:5:d:/application2/CTEX/MiKTeX/tex/latex/cjk/CJK.sty
 Input:6:d:/application2/CTEX/MiKTeX/tex/latex/cjk/mule/MULEenc.sty
@@ -38,10 +38,10 @@ Input:36:d:/application2/CTEX/UserData/tex/latex/lettrine/lettrine.cfg
 Input:37:d:/application2/CTEX/MiKTeX/tex/latex/cjk/standard.bdg
 Input:38:d:/application2/CTEX/MiKTeX/tex/latex/cjk/extended.enc
 Input:39:d:/application2/CTEX/MiKTeX/tex/latex/cjk/extended.chr
-Input:40:F:/git_up/mypaper/faul_LPV_kzllyyy/GB.cpx
-Input:41:F:/git_up/mypaper/faul_LPV_kzllyyy/kzllyy_template20130418-2.8.aux
+Input:40:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/GB.cpx
+Input:41:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/Active_fault-tolerant_LPV_control_of_wind_turbines.aux
 Input:42:d:/application2/CTEX/MiKTeX/tex/latex/psnfss/ot1ptm.fd
-Input:43:F:/git_up/mypaper/faul_LPV_kzllyyy/GB.cpx
+Input:43:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/GB.cpx
 Input:44:d:/application2/CTEX/CTeX/tex/latex/CJK/GB/c19song.fd
 Input:45:d:/application2/CTEX/MiKTeX/tex/latex/amsfonts/umsa.fd
 Input:46:d:/application2/CTEX/MiKTeX/tex/latex/amsfonts/umsb.fd
@@ -54,7 +54,7 @@ Unit:1
 X Offset:4736287
 Y Offset:4736287
 Content:
-!3320
+!3408
 {1
 [1,157:321126,49273550:30953685,50911950,0
 [1,157:-611213,49273550:31886024,49928910,0
@@ -23311,9 +23311,9 @@ g1,875:30306606,49280367
 ]
 !80334
 }6
-Input:50:F:/git_up/mypaper/faul_LPV_kzllyyy/kzllyy_template20130418-2.8.aux
-!86
+Input:50:F:/git_up/mypaper/faul_LPV_kzllyyy/submit/Active_fault-tolerant_LPV_control_of_wind_turbines.aux
+!116
 Postamble:
 Count:15520
-!27
+!28
 Post scriptum:
