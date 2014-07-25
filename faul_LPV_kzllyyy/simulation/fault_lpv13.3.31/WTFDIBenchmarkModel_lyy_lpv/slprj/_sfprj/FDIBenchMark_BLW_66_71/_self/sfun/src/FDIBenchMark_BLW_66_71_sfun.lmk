@@ -1,0 +1,39 @@
+CC     = "d:\application2\matalb\sys\lcc\bin\lcc.exe"
+LD     = "d:\application2\matalb\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "d:\application2\matalb\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"d:\application2\matalb\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"FDIBenchMark_BLW_66_71_sfun.obj"\
+	"FDIBenchMark_BLW_66_71_sfun_registry.obj"\
+	"c1_FDIBenchMark_BLW_66_71.obj"\
+	"c2_FDIBenchMark_BLW_66_71.obj"\
+	"lccstub.obj"\
+	"d:\application2\matalb\sys\lcc\mex\lccdef.def"\
+	"d:\application2\matalb\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"d:\application2\matalb\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libmex.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libmx.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libut.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libemlrt.lib"\
+	"d:\application2\matalb\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"d:\application2\matalb\sys\lcc\include"  -I"d:\application2\matalb\extern\include"  -I"d:\application2\matalb\simulink\include"  -I"d:\application2\matalb\stateflow\c\mex\include"  -I"d:\application2\matalb\stateflow\c\debugger\include" 
+ 
+
+FDIBenchMark_BLW_66_71_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o FDIBenchMark_BLW_66_71_sfun.mexw32 @FDIBenchMark_BLW_66_71_sfun.lmko
+FDIBenchMark_BLW_66_71_sfun.obj :	"FDIBenchMark_BLW_66_71_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "FDIBenchMark_BLW_66_71_sfun.c"
+FDIBenchMark_BLW_66_71_sfun_registry.obj :	"FDIBenchMark_BLW_66_71_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "FDIBenchMark_BLW_66_71_sfun_registry.c"
+c1_FDIBenchMark_BLW_66_71.obj :	"c1_FDIBenchMark_BLW_66_71.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_FDIBenchMark_BLW_66_71.c"
+c2_FDIBenchMark_BLW_66_71.obj :	"c2_FDIBenchMark_BLW_66_71.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_FDIBenchMark_BLW_66_71.c"
+lccstub.obj :	"d:\application2\matalb\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "d:\application2\matalb\sys\lcc\mex\lccstub.c"
