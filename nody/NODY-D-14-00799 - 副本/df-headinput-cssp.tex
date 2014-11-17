@@ -1,0 +1,766 @@
+% Modified .tex file
+%--------------------------------------------------------
+%\makeindex
+%\pagenumbering{roman}
+%\tableofcontents
+%\listoffigures
+%\listoftables
+%---------------------------------
+%\input setwmf
+%\input seteps
+%\begin{figure}[!hbtp]
+%\centerwmf{6in}{4in}{}
+%\caption{Open-loop simulink structure}
+%\label{yyy}
+%\end{figure}
+%See Fig.~\ref{yyy}
+%=========================================================
+%       Definitions                                 %
+% Latex abbrevs ----------------------------------------
+%\newcommand{\ba}{\begin{array}}
+%\newcommand{\ea}{\end{array}}
+%\newcommand{\bc}{\begin{center}}
+%\newcommand{\ec}{\end{center}}
+
+%\newcommand{\beqn}[1]{\begin{equation}\label{#1}}
+%\newcommand{\eeqn}{\end{equation}}
+%\newcommand{\be}{\begin{equation}}
+%\newcommand{\ee}{\end{equation}}
+
+%\newcommand{\beqnn}{\begin{eqnarray}}
+%\newcommand{\eeqnn}{\end{eqnarray}}
+\newcommand{\non}{\nonumber}
+%-------------------------------------------------------
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{definition}{Definition}
+%\newtheorem{property}{Property}
+%\newtheorem{proposition}{Proposition}
+
+%\newtheorem{thm}{Theorem}
+%\newtheorem{cor}{Corollary}
+
+%\newtheorem{proof}{Proof}
+
+\newcommand{\upcite}[1]{\hspace{-1mm}\textsuperscript{\cite{#1}}}
+%-------------------------------------------------------
+
+%\newcommand{\va}{\vspace*{5mm}}
+%\newcommand{\vb}{\vspace*{10mm}}
+%\newcommand{\vc}{\vspace*{15mm}}
+%\newcommand{\ha}{\mbox{}\hspace*{5mm}}
+%\newcommand{\hb}{\mbox{}\hspace*{10mm}}
+%\newcommand{\hc}{\mbox{}\hspace*{15mm}}
+%\newcommand{\hsp}{\mbox{}\hspace{8mm}}
+%-------------------------------------------------------
+%\newcommand{\thetat}{{\theta}^{\T}}
+%\newcommand{\btheta}{\bar{\theta}}
+%\newcommand{\bthetat}{\bar{\theta}^{\T}}
+%\newcommand{\htheta}{\hat{\theta}}
+%\newcommand{\hthetat}{\hat{\theta}^{\T}}
+%\newcommand{\ttheta}{\tilde{\theta}}
+%\newcommand{\tthetat}{\tilde{\theta}^{\T}}
+
+%\newcommand{\varphit}{\varphi^{\T}}
+%\newcommand{\hvarphi}{\hat{\varphi}}
+%\newcommand{\hvarphit}{\hat{\varphi}^{\T}}
+
+%\newcommand{\hy}{\hat{y}}
+%\newcommand{\ty}{\tilde{y}}
+%\newcommand{\hu}{\hat{u}}
+%\newcommand{\tu}{\tilde{u}}
+
+%\newcommand{\un}[1]{\underline{#1}\,}
+%--------------------------------------------
+% functions
+%\newcommand{\ejt}{{\rm e}^{\jjj\theta}}
+%\newcommand{\ejw}{{\rm e}^{\jjj\omega}}
+
+%\newcommand{\ddd}[1]{{\rm d}{#1}}
+%\newcommand{\eee}[1]{{\rm e}^{#1}}
+%\newcommand{\e}[1]{{\rm e}^{#1}}
+
+%\newcommand{\aaa}{{\rm a}}
+%\newcommand{\CCC}{{\rm C}}
+%\newcommand{\ccc}{{\rm c}}
+%\newcommand{\fff}{{\rm f}}
+%\newcommand{\jjj}{{\rm j}}
+%\newcommand{\HH}{{\rm H}}
+%\newcommand{\ooo}{{\rm o}}
+%--------------------------------------------
+%空心
+\newcommand{\C}{{\mathbb C}}   %Compex number set
+\newcommand{\F}{{\mathbb F}}   %=\R or \C
+\newcommand{\R}{{\mathbb R}}   %Real number set -\infty to \infty
+\newcommand{\N}{{\mathbb N}}   %natrural number set: 1, 2, 3, ...; \N_0={0, 1,2,3,...}
+\newcommand{\Z}{{\mathbb Z}}   %integer set: \{ ..., -2, -1, 0, 1, 2, ...\}
+\newcommand{\K}{{\mathbb K}}
+\newcommand{\Q}{{\mathbb Q}}   %Rational number set or extension field
+
+%正体
+\newcommand{\E}{{\rm E}}
+%\newcommand{\T}{{\rm T}}
+\def\T{\tiny\mbox{\rm T}}
+\def\H{\tiny\mbox{\rm H}}
+
+
+%
+\newcommand{\adj}{{\rm\,adj}}
+\newcommand{\AR}{{\rm AR}}
+\newcommand{\arctg}{{\rm arctg}}
+\newcommand{\asas}{{\rm a.s.}}
+\newcommand{\blockdiag}{{\rm blockdiag}}
+
+\newcommand{\co}{{\rm co}}
+\newcommand{\col}{{\rm col}}
+\newcommand{\coeff}{{\rm coeff}}
+\newcommand{\const}{{\rm const}}
+\newcommand{\cov}{{\rm cov}}
+%\newcommand{\def}{{\rm def}}
+%\newcommand{\deg}{{\rm deg}}
+\newcommand{\diag}{{\rm diag}}
+
+\newcommand{\adiag}{{\rm adiag}}
+
+\newcommand{\FFLS}{{\rm FFLS}}
+%\newcommand{\forall}{{\rm \ for\ all\ }}
+\newcommand{\grad}{{\rm grad}}
+%\newcommand{\gcd}{{\rm gcd}}
+\newcommand{\Ima}{{\rm Im}}
+\newcommand{\IV}{{\rm IV}}
+\newcommand{\lcm}{{\rm lmc}}
+\newcommand{\LCM}{{\rm LCM}}
+\newcommand{\Ln}{{\rm Ln}}
+\newcommand{\LS}{{\rm LS}}
+\newcommand{\msms}{{\rm m.s.}}
+%\newcommand{\mod}{{\rm mod}}
+
+\newcommand{\ns}{{\rm ns}}
+\newcommand{\ob}{{\rm ob}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Rea}{{\rm Re}}
+\newcommand{\Res}{{\rm Res}}
+\newcommand{\sgn}{{\rm sgn}}
+\newcommand{\Si}{{\rm Si}}
+\newcommand{\sinc}{{\rm sinc}}
+%\newcommand{\th}{{\rm th}}
+\newcommand{\tg}{{\rm tg}}
+\newcommand{\tr}{{\rm tr}}
+\newcommand{\var}{{\rm var}}
+
+%\dim \det \exp \gcd
+\newcommand{\binom}[2]{\left(\begin{array}{c}#1\\#2\end{array}\right)}
+%-----------matrices--------------------------------
+\newcommand{\vect}[2]{\left[\begin{array}{c} #1 \\  #2 \end{array} \right]}
+\newcommand{\vectr}[2]{\left[\begin{array}{r} #1 \\  #2 \end{array} \right]}
+
+\newcommand{\vectt}[3]{\left[\begin{array}{c} #1 \\  #2 \\  #3 \end{array}\right]}
+\newcommand{\vecttr}[3]{\left[\begin{array}{r} #1 \\  #2 \\  #3 \end{array}\right]}
+
+\newcommand{\vectf}[4]{\left[\begin{array}{c} #1 \\  #2 \\  #3 \\ #4 \end{array}\right]}
+\newcommand{\vectfr}[4]{\left[\begin{array}{r} #1 \\  #2 \\  #3 \\ #4 \end{array}\right]}
+
+\newcommand{\vectfd}[4]{\left[\begin{array}{c} #1 \\  #2 \\  #3 \\  \vdots \\ #4 \end{array}\right]}
+\newcommand{\vectfdr}[4]{\left[\begin{array}{r} #1 \\  #2 \\  #3 \\  \vdots \\ #4 \end{array}\right]}
+
+
+\newcommand{\vectfive}[5]{\left[\begin{array}{c} #1 \\  #2 \\  #3 \\  #4 \\ #5 \end{array}\right]}
+\newcommand{\vectfiver}[5]{\left[\begin{array}{r} #1 \\  #2 \\  #3 \\  #4 \\ #5 \end{array}\right]}
+
+\newcommand{\vectsix}[6]{\left[\begin{array}{c} #1 \\  #2 \\  #3 \\  #4 \\ #5 \\ #6 \end{array}\right]}
+\newcommand{\vectsixr}[6]{\left[\begin{array}{r} #1 \\  #2 \\  #3 \\  #4 \\ #5 \\ #6 \end{array}\right]}
+
+\newcommand{\tfmat}[4]{\left[\begin{array}{c|c} #1 & #2 \\  \hline
+                                                #3 & #4\end{array}\right]}
+
+
+%3 order, 4 order diagonal matrices
+\newcommand{\diagthree}[3]{\setlength\arraycolsep{5pt}\left[\begin{array}{ccc} #1 &   &    \\
+                                                       & #2&      \\
+                                                       &   & #3  \end{array} \right] }
+
+
+\newcommand{\diagfour}[4]{%\setlength\arraycolsep{5pt}
+                         \left[\begin{array}{cccc} #1 &   &   &    \\
+                                                       & #2&   &    \\
+                                                       &   & #3&    \\
+                                                       &   &   &#4  \end{array} \right] }
+
+%2阶矩阵
+\newcommand{\mtwo}[4]{\setlength\arraycolsep{5pt}\left[\begin{array}{cc}#1 & #2 \\ #3 & #4\end{array}\right]}
+\newcommand{\mtwor}[4]{\setlength\arraycolsep{5pt}\left[\begin{array}{rr}#1 & #2\\ #3 & #4\end{array}\right]}
+
+%2阶行列式
+\newcommand{\dtwo}[4]{\setlength\arraycolsep{5pt}\left|\begin{array}{cc}#1 & #2 \\  #3 & #4\end{array} \right|}
+\newcommand{\dtwor}[4]{\setlength\arraycolsep{5pt}\left|\begin{array}{rr}#1 & #2\\  #3 & #4\end{array} \right|}
+
+%3阶矩阵
+\newcommand{\mthree}[9]{\setlength\arraycolsep{5pt}
+                        \left[\begin{array}{ccc}#1 & #2 & #3 \\
+                                                #4 & #5 & #6 \\
+                                                #7 & #8 & #9\end{array} \right]}
+\newcommand{\mthreer}[9]{\setlength\arraycolsep{5pt}
+                         \left[\begin{array}{rrr}#1 & #2 & #3\\
+                                                 #4 & #5 & #6 \\
+                                                 #7 & #8 & #9\end{array} \right]}
+
+%3阶行列式
+\newcommand{\dthree}[9]{\setlength\arraycolsep{5pt}
+                        \left|\begin{array}{ccc}#1 & #2 & #3 \\
+                                                #4 & #5 & #6 \\
+                                                #7 & #8 & #9\end{array} \right|}
+\newcommand{\dthreer}[9]{\setlength\arraycolsep{5pt}
+                         \left|\begin{array}{rrr}#1 & #2 & #3\\
+                                                 #4 & #5 & #6 \\
+                                                 #7 & #8 & #9\end{array} \right|}
+
+%控制器友矩阵------------------------------------------------------
+\newcommand{\mAc}{\setlength\arraycolsep{5pt}
+            \left[\begin{array}{ccccc}
+                -a_1 & -a_2 &  \cdots & -a_{n-1} & -a_n\\
+                   1 & 0 &  \cdots & 0 & 0\\
+                   0 & 1 &  \cdots & 0 & 0\\
+              \vdots &  \vdots &\ddots  & \vdots & \vdots\\
+                   0 & 0 &  \cdots & 1 & 0 \end{array}\right]}
+
+\newcommand{\mAcfive}[5]{\setlength\arraycolsep{5pt}
+            \left[\begin{array}{ccccc}
+              #1 & #2 &  #3 & #4 & #5\\
+               1 & 0 &  \cdots & 0 & 0\\
+               0 & 1 &  \cdots & 0 & 0\\
+          \vdots &  \vdots &\ddots  & \vdots & \vdots\\
+               0 & 0 &  \cdots & 1 & 0 \end{array}\right]}
+
+\newcommand{\mAcfiver}[5]{\setlength\arraycolsep{5pt}
+            \left[\begin{array}{rrrrr}
+              #1 & #2 &  #3 & #4 & #5\\
+               1 & 0 &  \cdots & 0 & 0\\
+               0 & 1 &  \cdots & 0 & 0\\
+          \vdots &  \vdots &\ddots  & \vdots & \vdots\\
+               0 & 0 &  \cdots & 1 & 0 \end{array}\right]}
+
+\newcommand{\dAcfive}[5]{\setlength\arraycolsep{5pt}
+            \left|\begin{array}{ccccc}
+              #1 & #2 &  #3 & #4 & #5\\
+               1 & 0 &  \cdots & 0 & 0\\
+               0 & 1 &  \cdots & 0 & 0\\
+          \vdots &  \vdots &\ddots  & \vdots & \vdots\\
+               0 & 0 &  \cdots & 1 & 0 \end{array}\right]}
+
+\newcommand{\dAcfiver}[5]{\setlength\arraycolsep{5pt}
+                 \left|\begin{array}{rrrrr}
+              #1 & #2 &  #3 & #4 & #5\\
+               1 & 0 &  \cdots & 0 & 0\\
+               0 & 1 &  \cdots & 0 & 0\\
+          \vdots &  \vdots &\ddots  & \vdots & \vdots\\
+               0 & 0 &  \cdots & 1 & 0 \end{array}\right|}
+
+%能控性规范型友矩阵-------------------------------------------------
+\newcommand{\mAco}{\setlength\arraycolsep{7pt}
+             \left[\begin{array}{cccccc}
+              0 & 0 & 0 & \cdots & 0 & -a_n\\
+              1 & 0 & 0 & \cdots & 0 & -a_{n-1}\\
+              0 & 1 & 0 & \cdots & 0 & -a_{n-2}\\
+         \vdots & \vdots& \vdots &   & \vdots & \vdots\\
+              0 & 0 & 0 & \cdots & 1 & -a_1 \end{array}\right]}
+
+\newcommand{\mAcofive}[5]{\setlength\arraycolsep{5pt}
+             \left[\begin{array}{ccccc}
+              0 & 0 &  \cdots & 0 & #1\\
+              1 & 0 &  \cdots & 0 & #2\\
+              0 & 1 &  \cdots & 0 & #3\\
+         \vdots &  \vdots &\ddots & \vdots & #4\\
+              0 & 0 &  \cdots & 1 & #5 \end{array}\right]}
+
+\newcommand{\mAcofiver}[5]{\setlength\arraycolsep{5pt}
+             \left[\begin{array}{rrrrr}
+              0 & 0 &  \cdots & 0 & #1\\
+              1 & 0 &  \cdots & 0 & #2\\
+              0 & 1 &  \cdots & 0 & #3\\
+         \vdots &  \vdots &\ddots & \vdots & #4\\
+              0 & 0 &  \cdots & 1 & #5 \end{array}\right]}
+
+\newcommand{\dAcofive}[5]{\setlength\arraycolsep{5pt}
+             \left|\begin{array}{ccccc}
+              0 & 0 &  \cdots & 0 & #1\\
+              1 & 0 &  \cdots & 0 & #2\\
+              0 & 1 &  \cdots & 0 & #3\\
+         \vdots &  \vdots &\ddots & \vdots & #4\\
+              0 & 0 &  \cdots & 1 & #5 \end{array}\right|}
+
+\newcommand{\dAcofiver}[5]{\setlength\arraycolsep{5pt}
+             \left|\begin{array}{rrrrr}
+              0 & 0 &  \cdots & 0 & #1\\
+              1 & 0 &  \cdots & 0 & #2\\
+              0 & 1 &  \cdots & 0 & #3\\
+         \vdots &  \vdots &\ddots & \vdots & #4\\
+              0 & 0 &  \cdots & 1 & #5 \end{array}\right|}
+
+%观测器规范型友矩阵-------------------------------------------------
+\newcommand{\mAo}{\setlength\arraycolsep{7pt}
+                  \left[\begin{array}{ccccc}
+                   -a_1 & 1     & 0  & \cdots  & 0\\
+                   -a_2 & 0     & 1  &         & \vdots\\
+                 \vdots & \vdots&    & \ddots  & 0\\
+               -a_{n-1} & 0     & \cdots& 0  & 1\\
+                   -a_n & 0     & \cdots  & \cdots  & 0 \end{array}\right]}
+
+\newcommand{\mAofive}[5]{\setlength\arraycolsep{5pt}
+                  \left[\begin{array}{ccccc}
+                   #1 & 1 & 0 & \cdots & 0\\
+                   #2 & 0 & 1 & \cdots & 0\\
+                   #3 & \vdots & \vdots &\ddots  & \vdots\\
+                   #4 & 0 & 0 & \cdots & 1\\
+                   #5 & 0 & 0 & \cdots & 0\end{array}\right]}
+
+\newcommand{\mAofiver}[5]{\setlength\arraycolsep{5pt}
+                  \left[\begin{array}{rrrrr}
+                   #1 & 1 & 0 & \cdots & 0\\
+                   #2 & 0 & 1 & \cdots & 0\\
+                   #3 & \vdots & \vdots &\ddots  & \vdots\\
+                   #4 & 0 & 0 & \cdots & 1\\
+                   #5 & 0 & 0 & \cdots & 0\end{array}\right]}
+
+\newcommand{\dAofive}[5]{\setlength\arraycolsep{5pt}
+                  \left|\begin{array}{ccccc}
+                   #1 & 1 & 0 & \cdots & 0\\
+                   #2 & 0 & 1 & \cdots & 0\\
+                   #3 & \vdots & \vdots &\ddots  & \vdots\\
+                   #4 & 0 & 0 & \cdots & 1\\
+                   #5 & 0 & 0 & \cdots & 0\end{array}\right|}
+
+\newcommand{\dAofiver}[5]{\setlength\arraycolsep{5pt}
+                  \left|\begin{array}{rrrrr}
+                   #1 & 1 & 0 & \cdots & 0\\
+                   #2 & 0 & 1 & \cdots & 0\\
+                   #3 & \vdots & \vdots &\ddots  & \vdots\\
+                   #4 & 0 & 0 & \cdots & 1\\
+                   #5 & 0 & 0 & \cdots & 0\end{array}\right|}
+
+%能观测性规范型友矩阵-------------------------------------------------
+\newcommand{\mAob}{\setlength\arraycolsep{5pt}
+                   \left[\begin{array}{ccccc}
+                     0 & 1 & 0 & \cdots & 0\\
+                     0 & 0 & 1 & \cdots & 0 \\
+                \vdots & \vdots & \vdots & \ddots & \vdots\\
+                     0 & 0 & 0 & \cdots & 1\\
+                  -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1\end{array}\right]}
+
+\newcommand{\mAobfive}[5]{\setlength\arraycolsep{5pt}
+                   \left[\begin{array}{ccccc}
+                     0 & 1 & 0 & \cdots & 0\\
+                     0 & 0 & 1 & \cdots & 0 \\
+                \vdots & \vdots& \vdots & \ddots & \vdots\\
+                     0 & 0 & 0 & \cdots & 1\\
+                    #1 & #2& #3&  #4    & #5\end{array}\right]}
+
+\newcommand{\mAobfiver}[5]{\setlength\arraycolsep{5pt}
+                   \left[\begin{array}{rrrrr}
+                     0 & 1 & 0 & \cdots & 0\\
+                     0 & 0 & 1 & \cdots & 0 \\
+                \vdots & \vdots& \vdots & \ddots & \vdots\\
+                     0 & 0 & 0 & \cdots & 1\\
+                    #1 & #2& #3&  #4    & #5\end{array}\right]}
+
+\newcommand{\dAobfive}[5]{\setlength\arraycolsep{5pt}
+                   \left|\begin{array}{ccccc}
+                     0 & 1 & 0 & \cdots & 0\\
+                     0 & 0 & 1 & \cdots & 0 \\
+                \vdots & \vdots& \vdots & \ddots & \vdots\\
+                     0 & 0 & 0 & \cdots & 1\\
+                    #1 & #2& #3&  #4    & #5\end{array}\right|}
+
+\newcommand{\dAobfiver}[5]{\setlength\arraycolsep{5pt}
+                   \left|\begin{array}{ccccc}
+                     0 & 1 & 0 & \cdots & 0\\
+                     0 & 0 & 1 & \cdots & 0 \\
+                \vdots & \vdots& \vdots & \ddots & \vdots\\
+                     0 & 0 & 0 & \cdots & 1\\
+                    #1 & #2& #3&  #4    & #5\end{array}\right|}
+
+\iffalse
+%4阶矩阵
+\newcommand{\mfour}[16]{\setlength\arraycolsep{5pt}
+                        \left[\begin{array}{cccc}#1 & #2 & #3 & #4\\
+                                                 #5 & #6 & #7 & #8\\
+                                                 #9 & #10 & #11 & #12\\
+                                                 #13& #14 & #15 & #16\end{array} \right]}
+\newcommand{\mfourr}[16]{\setlength\arraycolsep{5pt}
+                         \left[\begin{array}{rrrr}#1 & #2 & #3 & #4\\
+                                                  #5 & #6 & #7 & #8\\
+                                                  #9 & #10 & #11 & #12\\
+                                                  #13& #14 & #15 & #16\end{array} \right]}
+
+%4阶行列式
+\newcommand{\dfour}[16]{\setlength\arraycolsep{5pt}
+                        \left|\begin{array}{cccc}#1 & #2 & #3 & #4\\
+                                                 #5 & #6 & #7 & #8\\
+                                                 #9 & #10 & #11 & #12\\
+                                                 #13& #14 & #15 & #16\end{array} \right|}
+\newcommand{\dfourr}[16]{\setlength\arraycolsep{5pt}
+                         \left|\begin{array}{rrrr}#1 & #2 & #3 & #4\\
+                                                  #5 & #6 & #7 & #8\\
+                                                  #9 & #10 & #11 & #12\\
+                                                  #13& #14 & #15 & #16\end{array} \right|}
+
+%5阶矩阵
+\newcommand{\mfive}[25]{\setlength\arraycolsep{5pt}
+                        \left[\begin{array}{ccccc}#1 & #2 & #3 & #4 & #5\\
+                                                  #6 & #7 & #8 & #9 & #10\\
+                                                  #11 & #12 & #13 & #14 & #15\\
+                                                  #16 & #17 & #18 & #19 & #20\\
+                                                  #21 & #22 & #23 & #24 & #25\end{array} \right]}
+\newcommand{\mfiver}[25]{\setlength\arraycolsep{5pt}
+                         \left[\begin{array}{rrrrr}#1 & #2 & #3 & #4 & #5\\
+                                                   #6 & #7 & #8 & #9 & #10\\
+                                                   #11 & #12 & #13 & #14 & #15\\
+                                                   #16 & #17 & #18 & #19 & #20\\
+                                                   #21 & #22 & #23 & #24 & #25\end{array} \right]}
+
+%5阶行列式
+\newcommand{\dfive}[25]{\setlength\arraycolsep{5pt}
+                        \left|\begin{array}{ccccc}#1 & #2 & #3 & #4 & #5\\
+                                                  #6 & #7 & #8 & #9 & #10\\
+                                                  #11 & #12 & #13 & #14 & #15\\
+                                                  #16 & #17 & #18 & #19 & #20\\
+                                                  #21 & #22 & #23 & #24 & #25\end{array} \right|}
+\newcommand{\dfiver}[25]{\setlength\arraycolsep{5pt}
+                         \left|\begin{array}{rrrrr}#1 & #2 & #3 & #4 & #5\\
+                                                   #6 & #7 & #8 & #9 & #10\\
+                                                   #11 & #12 & #13 & #14 & #15\\
+                                                   #16 & #17 & #18 & #19 & #20\\
+                                                   #21 & #22 & #23 & #24 & #25\end{array} \right|}
+\fi
+
+%花体大写-------------------------------------------------------------------------------------------------------
+\def\CalA{{\mathcal A}}
+\def\CalB{{\mathcal B}}
+\def\CalC{{\mathcal C}}
+\def\CalD{{\mathcal D}}
+\def\CalE{{\mathcal E}}
+\def\CalF{{\mathcal F}}
+\def\CalG{{\mathcal G}}
+\def\CalH{{\mathcal H}}
+\def\CalI{{\mathcal I}}
+\def\CalJ{{\mathcal J}}
+\def\CalK{{\mathcal K}}
+\def\CalL{{\mathcal L}}
+\def\CalM{{\mathcal M}}
+\def\CalN{{\mathcal N}}
+\def\CalO{{\mathcal O}}
+\def\CalP{{\mathcal P}}
+\def\CalQ{{\mathcal Q}}
+\def\CalR{{\mathcal R}}
+\def\CalS{{\mathcal S}}
+\def\CalT{{\mathcal T}}
+\def\CalU{{\mathcal U}}
+\def\CalV{{\mathcal V}}
+\def\CalW{{\mathcal W}}
+\def\CalX{{\mathcal X}}
+\def\CalY{{\mathcal Y}}
+\def\CalZ{{\mathcal Z}}
+%正体小写-------------------------------------------------------
+\newcommand{\rma}{{\rm a}}
+\newcommand{\rmb}{{\rm b}}
+\newcommand{\rmc}{{\rm c}}
+\newcommand{\rmd}{{\rm d}}
+\newcommand{\rme}{{\rm e}}
+\newcommand{\rmf}{{\rm f}}
+\newcommand{\rmg}{{\rm g}}
+\newcommand{\rmh}{{\rm h}}
+\newcommand{\rmi}{{\rm i}}
+\newcommand{\rmj}{{\rm j}}
+\newcommand{\rmk}{{\rm k}}
+\newcommand{\rml}{{\rm l}}
+\newcommand{\rmm}{{\rm m}}
+\newcommand{\rmn}{{\rm n}}
+\newcommand{\rmo}{{\rm o}}
+\newcommand{\rmp}{{\rm p}}
+\newcommand{\rmq}{{\rm q}}
+\newcommand{\rmr}{{\rm r}}
+\newcommand{\rms}{{\rm s}}
+\newcommand{\rmt}{{\rm t}}
+\newcommand{\rmu}{{\rm u}}
+\newcommand{\rmv}{{\rm v}}
+\newcommand{\rmw}{{\rm w}}
+\newcommand{\rmx}{{\rm x}}
+\newcommand{\rmy}{{\rm y}}
+\newcommand{\rmz}{{\rm z}}
+%正体大写
+\newcommand{\rmA}{{\rm A}}
+\newcommand{\rmB}{{\rm B}}
+\newcommand{\rmC}{{\rm C}}
+\newcommand{\rmD}{{\rm D}}
+\newcommand{\rmE}{{\rm E}}
+\newcommand{\rmF}{{\rm F}}
+\newcommand{\rmG}{{\rm G}}
+\newcommand{\rmH}{{\rm H}}
+\newcommand{\rmI}{{\rm I}}
+\newcommand{\rmJ}{{\rm J}}
+\newcommand{\rmK}{{\rm K}}
+\newcommand{\rmL}{{\rm L}}
+\newcommand{\rmM}{{\rm M}}
+\newcommand{\rmN}{{\rm N}}
+\newcommand{\rmO}{{\rm O}}
+\newcommand{\rmP}{{\rm P}}
+\newcommand{\rmQ}{{\rm Q}}
+\newcommand{\rmR}{{\rm R}}
+\newcommand{\rmS}{{\rm S}}
+\newcommand{\rmT}{{\rm T}}
+\newcommand{\rmU}{{\rm U}}
+\newcommand{\rmV}{{\rm V}}
+\newcommand{\rmW}{{\rm W}}
+\newcommand{\rmX}{{\rm X}}
+\newcommand{\rmY}{{\rm Y}}
+\newcommand{\rmZ}{{\rm Z}}
+%--黑斜体小写-----------------------------------------------------------------
+\def\bfa{\mbox{\boldmath$a$}}
+\def\bfb{\mbox{\boldmath$b$}}
+\def\bfc{\mbox{\boldmath$c$}}
+\def\bfd{\mbox{\boldmath$d$}}
+\def\bfe{\mbox{\boldmath$e$}}
+\def\bff{\mbox{\boldmath$f$}}
+\def\bfg{\mbox{\boldmath$g$}}
+\def\bfh{\mbox{\boldmath$h$}}
+\def\bfi{\mbox{\boldmath$i$}}
+\def\bfj{\mbox{\boldmath$j$}}
+\def\bfk{\mbox{\boldmath$k$}}
+\def\bfl{\mbox{\boldmath$l$}}
+\def\bfm{\mbox{\boldmath$m$}}
+\def\bfn{\mbox{\boldmath$n$}}
+\def\bfo{\mbox{\boldmath$o$}}
+\def\bfp{\mbox{\boldmath$p$}}
+\def\bfq{\mbox{\boldmath$q$}}
+\def\bfr{\mbox{\boldmath$r$}}
+\def\bfs{\mbox{\boldmath$s$}}
+\def\bft{\mbox{\boldmath$t$}}
+\def\bfu{\mbox{\boldmath$u$}}
+\def\bfv{\mbox{\boldmath$v$}}
+\def\bfw{\mbox{\boldmath$w$}}
+\def\bfx{\mbox{\boldmath$x$}}
+\def\bfy{\mbox{\boldmath$y$}}
+\def\bfz{\mbox{\boldmath$z$}}
+%黑斜体大写
+\def\bfA{\mbox{\boldmath$A$}}
+\def\bfB{\mbox{\boldmath$B$}}
+\def\bfC{\mbox{\boldmath$C$}}
+\def\bfD{\mbox{\boldmath$D$}}
+\def\bfE{\mbox{\boldmath$E$}}
+\def\bfF{\mbox{\boldmath$F$}}
+\def\bfG{\mbox{\boldmath$G$}}
+\def\bfH{\mbox{\boldmath$H$}}
+\def\bfI{\mbox{\boldmath$I$}}
+\def\bfJ{\mbox{\boldmath$J$}}
+\def\bfK{\mbox{\boldmath$K$}}
+\def\bfL{\mbox{\boldmath$L$}}
+\def\bfM{\mbox{\boldmath$M$}}
+\def\bfN{\mbox{\boldmath$N$}}
+\def\bfO{\mbox{\boldmath$O$}}
+\def\bfP{\mbox{\boldmath$P$}}
+\def\bfQ{\mbox{\boldmath$Q$}}
+\def\bfR{\mbox{\boldmath$R$}}
+\def\bfS{\mbox{\boldmath$S$}}
+\def\bfT{\mbox{\boldmath$T$}}
+\def\bfU{\mbox{\boldmath$U$}}
+\def\bfV{\mbox{\boldmath$V$}}
+\def\bfW{\mbox{\boldmath$W$}}
+\def\bfX{\mbox{\boldmath$X$}}
+\def\bfY{\mbox{\boldmath$Y$}}
+\def\bfZ{\mbox{\boldmath$Z$}}
+
+%\def\bfE{\mbox{\boldmath$E$}}
+%\def\bfG{\mbox{\boldmath$G$}}
+
+%--黑斜体希腊大写----------------------------------
+\def\bfDelta{\mbox{\boldmath$\Delta$}}
+\def\bfGamma{\mbox{\boldmath$\Gamma$}}
+\def\bfTheta{\mbox{\boldmath$\Theta$}}
+\def\bfLambda{\mbox{\boldmath$\Lambda$}}
+\def\bfXi{\mbox{\boldmath$\Xi$}}
+\def\bfPi{\mbox{\boldmath$\Pi$}}
+\def\bfSigma{\mbox{\boldmath$\Sigma$}}
+\def\bfUpsilon{\mbox{\boldmath$\Upsilon$}}
+\def\bfPhi{\mbox{\boldmath$\Phi$}}
+\def\bfPsi{\mbox{\boldmath$\Psi$}}
+\def\bfOmega{\mbox{\boldmath$\Omega$}}
+%黑斜体希腊小写
+\def\bfalpha{\mbox{\boldmath${\alpha}$}}
+\def\bfbeta{\mbox{\boldmath${\beta}$}}
+\def\bfgamma{\mbox{\boldmath${\gamma}$}}
+\def\bfdelta{\mbox{\boldmath${\delta}$}}
+\def\bfepsilon{\mbox{\boldmath${\epsilon}$}}
+\def\bfvarepsilon{\mbox{\boldmath${\varepsilon}$}}
+\def\bfzeta{\mbox{\boldmath${\zeta}$}}
+\def\bfeta{\mbox{\boldmath${\eta}$}}         % note the variation
+\def\bftheta{\mbox{\boldmath${\theta}$}}
+\def\bfiota{\mbox{\boldmath${\iota}$}}
+\def\bfkappa{\mbox{\boldmath${\kappa}$}}
+\def\bflambda{\mbox{\boldmath${\lambda}$}}
+\def\bfmu{\mbox{\boldmath${\mu}$}}
+\def\bfnu{ {\bf\nu}}
+\def\bfxi{\mbox{\boldmath${\xi}$}}
+\def\bfomicron{\mbox{\boldmath ${\omicron}$}}
+\def\bfpi{\mbox{\boldmath${\pi}$}}
+\def\bfrho{\mbox{\boldmath${\rho}$}}
+\def\bfsigma{\mbox{\boldmath${\sigma}$}}
+\def\bftau{\mbox{\boldmath${\tau}$}}
+\def\bfphi{\mbox{\boldmath${\phi}$}}
+\def\bfchi{\mbox{\boldmath${\chi}$}}
+\def\bfupsilon{\mbox{\boldmath${\upsilon}$}}
+\def\bfpsi{\mbox{\boldmath${\psi}$}}
+\def\bfomega{\mbox{\boldmath${\omega}$}}
+%
+\def\bfvaralpha{\mbox{\boldmath${\varalpha}$}}
+\def\bfvarbeta{\mbox{\boldmath${\varbeta}$}}
+\def\bfvargamma{\mbox{\boldmath${\vargamma}$}}
+\def\bfvardelta{\mbox{\boldmath${\vardelta}$}}
+\def\bfvarepsilon{\mbox{\boldmath${\varepsilon}$}}
+\def\bfvarzeta{\mbox{\boldmath${\varzeta}$}}
+\def\bfvareta{\mbox{\boldmath${\vareta}$}}
+\def\bfvartheta{\mbox{\boldmath${\vartheta}$}}
+\def\bfvariota{\mbox{\boldmath${\variota}$}}
+\def\bfvarkappa{\mbox{\boldmath${\varkappa}$}}
+\def\bfvarlambda{\mbox{\boldmath${\varlambda}$}}
+\def\bfvarmu{\mbox{\boldmath${\varmu}$}}
+\def\bfvarnu{\mbox{\boldmath${\varnu}$}}
+\def\bfvarxi{\mbox{\boldmath${\varxi}$}}
+\def\bfvaromicron{\mbox{\boldmath ${\varomicron}$}}
+\def\bfvarpi{\mbox{\boldmath${\pi}$}}
+\def\bfvarrho{\mbox{\boldmath${\varrho}$}}
+\def\bfvarsigma{\mbox{\boldmath${\varsigma}$}}
+\def\bfvartau{\mbox{\boldmath${\vartau}$}}
+\def\bfvarphi{\mbox{\boldmath${\varphi}$}}
+\def\bfvarchi{\mbox{\boldmath${\varchi}$}}
+\def\bfvarupsilon{\mbox{\boldmath${\varupsilon}$}}
+\def\bfvarpsi{\mbox{\boldmath${\varpsi}$}}
+\def\bfvaromega{\mbox{\boldmath${\varomega}$}}
+
+
+%--正黑体小写------------------------------------------------------------
+\def\rbfa{{\bf a}}
+\def\rbfb{{\bf b}}
+\def\rbfc{{\bf c}}
+\def\rbfd{{\bf d}}
+\def\rbfe{{\bf e}}
+\def\rbff{{\bf f}}
+\def\rbfg{{\bf g}}
+\def\rbfh{{\bf h}}
+\def\rbfi{{\bf i}}
+\def\rbfj{{\bf j}}
+\def\rbfk{{\bf k}}
+\def\rbfl{{\bf l}}
+\def\rbfm{{\bf m}}
+\def\rbfn{{\bf n}}
+\def\rbfo{{\bf o}}
+\def\rbfp{{\bf p}}
+\def\rbfq{{\bf q}}
+\def\rbfr{{\bf r}}
+\def\rbfs{{\bf s}}
+\def\rbft{{\bf t}}
+\def\rbfu{{\bf u}}
+\def\rbfv{{\bf v}}
+\def\rbfw{{\bf w}}
+\def\rbfx{{\bf x}}
+\def\rbfy{{\bf y}}
+\def\rbfz{{\bf z}}
+%正黑体大写
+\def\rbfA{{\bf A}}
+\def\rbfB{{\bf B}}
+\def\rbfC{{\bf C}}
+\def\rbfD{{\bf D}}
+\def\rbfE{{\bf E}}
+\def\rbfF{{\bf F}}
+\def\rbfG{{\bf G}}
+\def\rbfH{{\bf H}}
+\def\rbfI{{\bf I}}
+\def\rbfJ{{\bf J}}
+\def\rbfK{{\bf K}}
+\def\rbfL{{\bf L}}
+\def\rbfM{{\bf M}}
+\def\rbfN{{\bf N}}
+\def\rbfO{{\bf O}}
+\def\rbfP{{\bf P}}
+\def\rbfQ{{\bf Q}}
+\def\rbfR{{\bf R}}
+\def\rbfS{{\bf S}}
+\def\rbfT{{\bf T}}
+\def\rbfU{{\bf U}}
+\def\rbfV{{\bf V}}
+\def\rbfW{{\bf W}}
+\def\rbfX{{\bf X}}
+\def\rbfY{{\bf Y}}
+\def\rbfZ{{\bf Z}}
+%正黑体希腊大写
+\def\rbfDelta{{\bf \Delta}}
+\def\rbfGamma{{\bf \Gamma}}
+\def\rbfTheta{{\bf \Theta}}
+\def\rbfLambda{{\bf \Lambda}}
+\def\rbfXi{{\bf \Xi}}
+\def\rbfPi{{\bf \Pi}}
+\def\rbfSigma{{\bf \Sigma}}
+\def\rbfUpsilon{{\bf \Upsilon}}
+\def\rbfPhi{{\bf \Phi}}
+\def\rbfPsi{{\bf \Psi}}
+\def\rbfOmega{{\bf \Omega}}
+%正黑体希腊小写
+\def\rbfalpha{\mbox{\boldmath${\alpha}$}}
+\def\rbfbeta{\mbox{\boldmath${\beta}$}}
+\def\rbfgamma{\mbox{\boldmath${\gamma}$}}
+\def\rbfdelta{\mbox{\boldmath${\delta}$}}
+\def\rbfepsilon{\mbox{\boldmath${\epsilon}$}}
+\def\rbfvarepsilon{\mbox{\boldmath${\varepsilon}$}}
+\def\rbfzeta{\mbox{\boldmath${\zeta}$}}
+\def\rbfeta{\mbox{\boldmath${\eta}$}}         % note the variation
+\def\rbftheta{\mbox{\boldmath${\theta}$}}
+\def\rbfiota{\mbox{\boldmath${\iota}$}}
+\def\rbfkappa{\mbox{\boldmath${\kappa}$}}
+\def\rbflambda{\mbox{\boldmath${\lambda}$}}
+\def\rbfmu{\mbox{\boldmath${\mu}$}}
+\def\rbfnu{ {\bf\nu}}
+\def\rbfxi{\mbox{\boldmath${\xi}$}}
+\def\rbfomicron{\mbox{\boldmath ${\omicron}$}}
+\def\rbfpi{\mbox{\boldmath${\pi}$}}
+\def\rbfrho{\mbox{\boldmath${\rho}$}}
+\def\rbfsigma{\mbox{\boldmath${\sigma}$}}
+\def\rbftau{\mbox{\boldmath${\tau}$}}
+\def\rbfphi{\mbox{\boldmath${\phi}$}}
+\def\rbfchi{\mbox{\boldmath${\chi}$}}
+\def\rbfupsilon{\mbox{\boldmath${\upsilon}$}}
+\def\rbfpsi{\mbox{\boldmath${\psi}$}}
+\def\rbfomega{\mbox{\boldmath${\omega}$}}
+%正黑体希腊小写 var
+\def\rbfvaralpha{\mbox{\boldmath${\varalpha}$}}
+\def\rbfvarbeta{\mbox{\boldmath${\varbeta}$}}
+\def\rbfvargamma{\mbox{\boldmath${\vargamma}$}}
+\def\rbfvardelta{\mbox{\boldmath${\vardelta}$}}
+\def\rbfvarepsilon{\mbox{\boldmath${\varepsilon}$}}
+\def\rbfvarzeta{\mbox{\boldmath${\varzeta}$}}
+\def\rbfvareta{\mbox{\boldmath${\vareta}$}}
+\def\rbfvartheta{\mbox{\boldmath${\vartheta}$}}
+\def\rbfvariota{\mbox{\boldmath${\variota}$}}
+\def\rbfvarkappa{\mbox{\boldmath${\varkappa}$}}
+\def\rbfvarlambda{\mbox{\boldmath${\varlambda}$}}
+\def\rbfvarmu{\mbox{\boldmath${\varmu}$}}
+\def\rbfvarnu{\mbox{\boldmath${\varnu}$}}
+\def\rbfvarxi{\mbox{\boldmath${\varxi}$}}
+\def\rbfvaromicron{\mbox{\boldmath ${\varomicron}$}}
+\def\rbfvarpi{\mbox{\boldmath${\pi}$}}
+\def\rbfvarrho{\mbox{\boldmath${\varrho}$}}
+\def\rbfvarsigma{\mbox{\boldmath${\varsigma}$}}
+\def\rbfvartau{\mbox{\boldmath${\vartau}$}}
+\def\rbfvarphi{\mbox{\boldmath${\varphi}$}}
+\def\rbfvarchi{\mbox{\boldmath${\varchi}$}}
+\def\rbfvarupsilon{\mbox{\boldmath${\varupsilon}$}}
+\def\rbfvarpsi{\mbox{\boldmath${\varpsi}$}}
+\def\rbfvaromega{\mbox{\boldmath${\varomega}$}}
+%----------------------------------------------
+
+
+
+
+% 5. shortened caligraphic symbolics
+
+
+
+\newcommand{\longunderbrace}[1]{\underbrace{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}_{#1}}% 45mm(35spaces) long
