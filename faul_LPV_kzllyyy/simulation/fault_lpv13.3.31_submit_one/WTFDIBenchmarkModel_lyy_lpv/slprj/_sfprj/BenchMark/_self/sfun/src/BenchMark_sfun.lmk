@@ -1,0 +1,36 @@
+CC     = "h:\matalb\matalb\sys\lcc\bin\lcc.exe"
+LD     = "h:\matalb\matalb\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "h:\matalb\matalb\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"h:\matalb\matalb\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"BenchMark_sfun.obj"\
+	"BenchMark_sfun_registry.obj"\
+	"c2_BenchMark.obj"\
+	"lccstub.obj"\
+	"h:\matalb\matalb\sys\lcc\mex\lccdef.def"\
+	"h:\matalb\matalb\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"h:\matalb\matalb\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libmex.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libmx.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libut.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libemlrt.lib"\
+	"h:\matalb\matalb\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"h:\matalb\matalb\sys\lcc\include"  -I"h:\matalb\matalb\extern\include"  -I"h:\matalb\matalb\simulink\include"  -I"h:\matalb\matalb\stateflow\c\mex\include"  -I"h:\matalb\matalb\stateflow\c\debugger\include" 
+ 
+
+BenchMark_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o BenchMark_sfun.mexw32 @BenchMark_sfun.lmko
+BenchMark_sfun.obj :	"BenchMark_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "BenchMark_sfun.c"
+BenchMark_sfun_registry.obj :	"BenchMark_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "BenchMark_sfun_registry.c"
+c2_BenchMark.obj :	"c2_BenchMark.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_BenchMark.c"
+lccstub.obj :	"h:\matalb\matalb\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "h:\matalb\matalb\sys\lcc\mex\lccstub.c"
